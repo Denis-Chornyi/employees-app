@@ -26,7 +26,7 @@ const WorkerInfo: React.FC<WorkerInfoProps> = ({ onClose }) => {
   const handleStarIcon = () => {
     if (star === starEmptyIcon) {
       setStar(starIcon);
-      setStyleStarIcon({ width: '16px', margin: '0 18px 0 4.5px' });
+      setStyleStarIcon({ width: '16px', margin: '0 18px 0 4px' });
     } else {
       setStar(starEmptyIcon);
       setStyleStarIcon({ width: '24px', margin: '0 14px 0 0' });
