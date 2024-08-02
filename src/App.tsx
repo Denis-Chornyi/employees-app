@@ -7,7 +7,7 @@ import WorkerInfo from './worker-info/WorkerInfo';
 const App: React.FC = () => {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedWorker, setSelectedWorker] = useState<string | null>(null);
+  const [_, setSelectedWorker] = useState<string | null>(null);
 
   const toggleSort = () => {
     setIsSortOpen(!isSortOpen);

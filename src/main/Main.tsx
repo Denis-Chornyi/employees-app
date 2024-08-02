@@ -1,7 +1,6 @@
 import React from 'react';
 import WorkersListRender from '../workers-list-render/WorkersListRender';
 import SortWorkers from '../sort-workers/SortWorkers';
-import './main.scss';
 import { useNavigate } from 'react-router-dom';
 
 interface MainProps {
