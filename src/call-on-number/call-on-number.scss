@@ -1,0 +1,30 @@
+.call-container {
+  position: absolute;
+  bottom: 20px;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 8px;
+
+  &__btn {
+    padding: 18px 16px;
+    border-radius: 14px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__phone-number {
+    background-color: #e2e2e2;
+    margin-bottom: 8px;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+
+  &__cancel {
+    background-color: #fff;
+  }
+}

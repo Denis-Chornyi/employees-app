@@ -1,0 +1,128 @@
+@import '../breakpoints.scss';
+
+.sort-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort-block {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 400px;
+  border-radius: 20px 20px 0 0;
+  background-color: #fff;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 10;
+
+  @include for-large-up {
+    width: 373px;
+    height: 192px;
+    top: 40%;
+    transform: translateY(0);
+    border-radius: 20px;
+  }
+
+  &_active {
+    transform: translateY(0);
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__close-btn {
+    width: 56px;
+    height: 4px;
+    margin: 12px 0 12px 0;
+    background-color: #c3c3c6;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    @include for-large-up {
+      position: absolute;
+      top: 24px;
+      right: 23px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #f7f7f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__close-icon {
+    display: none;
+
+    @include for-large-up {
+      display: block;
+      width: 20px;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #050510;
+    margin: 0;
+
+    @include for-large-up {
+      margin-top: 24px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__wrapper {
+    margin: 20px 16px;
+    display: flex;
+    align-items: end;
+  }
+
+  &__button {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 100%;
+    outline: 0;
+    padding: 0;
+    margin-right: 20px;
+    border: 2px solid #6534ff;
+    cursor: pointer;
+  }
+  &__button_active {
+    border: 6px solid #6534ff;
+  }
+  &__description {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #050510;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #05051016;
+  z-index: 9;
+}

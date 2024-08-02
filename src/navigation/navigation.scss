@@ -1,0 +1,26 @@
+.navigation {
+  font-size: 15px;
+  border-bottom: 0.33px solid #c3c3c6;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+  }
+
+  &__item {
+    padding: 8px 12px;
+    cursor: pointer;
+
+    &_active {
+      border-bottom: 2px solid #6534ff;
+    }
+  }
+}
