@@ -48,7 +48,7 @@ module.exports = (_, argv) => {
       ]
     },
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      extensions: ['.js', '.ts', '.tsx']
     },
     plugins: [
       new webpack.ProgressPlugin(),
