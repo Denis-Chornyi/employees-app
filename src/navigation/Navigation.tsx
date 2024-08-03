@@ -1,8 +1,7 @@
-import React from 'react';
-import './navigation.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSortPosition } from '../state/workersSlice';
 import { RootState } from '../state/store';
+import './navigation.scss';
 
 const Navigation = () => {
   const dispatch = useDispatch();
