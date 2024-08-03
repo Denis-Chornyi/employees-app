@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, RouteObject } from 'react-router-dom';
 import Header from './header/Header';
 import Main from './main/Main';
 import WorkerInfo from './worker-info/WorkerInfo';
 
-const App: React.FC = () => {
+const MainWrapper: React.FC = () => {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [_, setSelectedWorker] = useState<string | null>(null);
@@ -13,34 +13,44 @@ const App: React.FC = () => {
     setIsSortOpen(!isSortOpen);
   };
 
-  const handleWorkerSelect = (id: string) => {
-    setSelectedWorker(id);
-  };
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Header toggleSort={toggleSort} setSearchTerm={setSearchTerm} />
-              <Main
-                toggleSort={toggleSort}
-                isSortOpen={isSortOpen}
-                searchTerm={searchTerm}
-                setSelectedWorker={handleWorkerSelect}
-              />
-            </>
-          }
-        />
-        <Route
-          path="/worker/:workerId"
-          element={<WorkerInfo onClose={() => setSelectedWorker(null)} />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Header toggleSort={toggleSort} setSearchTerm={setSearchTerm} />
+      <Main
+        toggleSort={toggleSort}
+        isSortOpen={isSortOpen}
+        searchTerm={searchTerm}
+        setSelectedWorker={setSelectedWorker}
+      />
+    </>
   );
+};
+
+const WorkerInfoWrapper: React.FC = () => {
+  return <WorkerInfo onClose={() => null} />;
+};
+
+const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <MainWrapper />
+  },
+  {
+    path: '/:filter',
+    element: <MainWrapper />
+  },
+  {
+    path: '/:filter/worker/:workerId',
+    element: <WorkerInfoWrapper />
+  }
+];
+
+const router = createBrowserRouter(routes, {
+  basename: '/'
+});
+
+const App: React.FC = () => {
+  return <RouterProvider router={router} />;
 };
 
 export default App;

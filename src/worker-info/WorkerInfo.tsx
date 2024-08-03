@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../state/store';
 import moment from 'moment';
@@ -18,6 +18,8 @@ const WorkerInfo: React.FC<WorkerInfoProps> = ({ onClose }) => {
   const [star, setStar] = useState(starEmptyIcon);
   const [styleStarIcon, setStyleStarIcon] = useState({ width: '24px', margin: '0 14px 0 0' });
   const [callOnNumber, setCallOnNumber] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleCallWindow = () => {
     setCallOnNumber(!callOnNumber);
@@ -41,17 +43,23 @@ const WorkerInfo: React.FC<WorkerInfoProps> = ({ onClose }) => {
   if (!worker) {
     return <div>Worker not found</div>;
   }
+
   const birthDate = moment(worker.birthDate).format('D MMMM YYYY');
   const age = moment().diff(moment(worker.birthDate), 'years');
+
+  const handleClose = () => {
+    const previousPath = location.state?.from || '/everybody';
+    navigate(previousPath);
+  };
 
   return (
     <>
       <section className={`worker-info ${callOnNumber ? 'dimmed' : ''}`}>
         <div className={`worker-info__container ${callOnNumber ? 'dimmed' : ''}`}>
           <div className="worker-info__header">
-            <Link to="/" className="worker-info__close-btn" onClick={onClose}>
+            <button className="worker-info__close-btn" onClick={handleClose}>
               <img src={arrowIcon} alt="arrow icon" />
-            </Link>
+            </button>
             <img src={worker.avatar} className="worker-info__img" alt="avatar" />
             <h3 className="worker-info__name">
               {worker.name}

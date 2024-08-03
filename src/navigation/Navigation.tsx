@@ -1,16 +1,27 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSortPosition } from '../state/workersSlice';
 import { RootState } from '../state/store';
+import { useNavigate, useParams } from 'react-router-dom';
 import './navigation.scss';
 
 const Navigation = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { filter } = useParams<{ filter: string }>();
   const activeButton = useSelector((state: RootState) => state.workers.sortPosition);
 
+  useEffect(() => {
+    if (filter) {
+      dispatch(setSortPosition(filter as any));
+    }
+  }, [filter, dispatch]);
+
   const handleButtonClick = (
-    buttonType: 'Everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios'
+    buttonType: 'everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios'
   ) => {
     dispatch(setSortPosition(buttonType));
+    navigate(`/${buttonType.toLowerCase()}`);
   };
 
   return (
@@ -19,9 +30,9 @@ const Navigation = () => {
         <ul className="navigation__list">
           <li
             className={`navigation__item ${
-              activeButton === 'Everybody' ? 'navigation__item_active' : ''
+              activeButton === 'everybody' ? 'navigation__item_active' : ''
             }`}
-            onClick={() => handleButtonClick('Everybody')}
+            onClick={() => handleButtonClick('everybody')}
           >
             Everybody
           </li>

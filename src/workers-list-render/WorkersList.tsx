@@ -1,18 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../state/store';
-import './workers-list.scss';
+import { Worker } from '../state/workersSlice';
 import NotFindWorkers from './NotFindWorkers';
+import './workers-list.scss';
+import { RootState } from '../state/store';
+import { useSelector } from 'react-redux';
 
 interface WorkerListProps {
   searchTerm: string;
+  workers: Worker[];
   setSelectedWorker: (id: string) => void;
+  filter: string;
 }
 
-const WorkerList: React.FC<WorkerListProps> = ({ searchTerm, setSelectedWorker }) => {
-  const workers = useSelector((state: RootState) => state.workers.workers);
+const WorkerList: React.FC<WorkerListProps> = ({
+  searchTerm,
+  workers,
+  setSelectedWorker,
+  filter
+}) => {
   const sortCriteria = useSelector((state: RootState) => state.workers.sortCriteria);
-  const sortPosition = useSelector((state: RootState) => state.workers.sortPosition);
 
   const filteredWorkers = workers.filter(
     worker =>
@@ -20,7 +26,11 @@ const WorkerList: React.FC<WorkerListProps> = ({ searchTerm, setSelectedWorker }
       worker.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const sortedWorkers = filteredWorkers.sort((a, b) => {
+  const filteredAndSortedWorkers = filteredWorkers.filter(worker => {
+    if (filter === 'everybody' || filter === undefined) return true;
+    return worker.position.toLowerCase() === filter.toLowerCase();
+  });
+  const sortedWorkers = filteredAndSortedWorkers.sort((a, b) => {
     if (sortCriteria === 'alphabet') {
       return a.name.localeCompare(b.name);
     } else {
@@ -28,18 +38,13 @@ const WorkerList: React.FC<WorkerListProps> = ({ searchTerm, setSelectedWorker }
     }
   });
 
-  const displayedWorkers =
-    sortPosition === 'Everybody'
-      ? sortedWorkers
-      : sortedWorkers.filter(worker => worker.position === sortPosition);
-
-  if (displayedWorkers.length === 0) {
+  if (sortedWorkers.length === 0) {
     return <NotFindWorkers />;
   }
 
   return (
     <ul className="workers__list">
-      {displayedWorkers.map(worker => (
+      {sortedWorkers.map(worker => (
         <li className="workers__item" key={worker.id} onClick={() => setSelectedWorker(worker.id)}>
           <div className="workers__img">
             <img className="workers__avatar" src={worker.avatar} alt="avatar" />

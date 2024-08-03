@@ -4,17 +4,23 @@ import { fetchWorkers } from '../state/workersSlice';
 import { RootState, AppDispatch } from '../state/store';
 import Failed from './Failed';
 import Skeleton from './Skeleton';
-import WorkerList from './WorkersList';
+import WorkersList from './WorkersList';
 import './workers-list.scss';
 
 interface WorkersListRenderProps {
   searchTerm: string;
+  filter: string;
   setSelectedWorker: (id: string) => void;
 }
 
-const WorkersListRender: React.FC<WorkersListRenderProps> = ({ searchTerm, setSelectedWorker }) => {
+const WorkersListRender: React.FC<WorkersListRenderProps> = ({
+  searchTerm,
+  filter,
+  setSelectedWorker
+}) => {
   const dispatch: AppDispatch = useDispatch();
   const status = useSelector((state: RootState) => state.workers.status);
+  const workers = useSelector((state: RootState) => state.workers.workers);
 
   useEffect(() => {
     if (status === 'ok') {
@@ -28,8 +34,15 @@ const WorkersListRender: React.FC<WorkersListRenderProps> = ({ searchTerm, setSe
     case 'loading':
       content = <Skeleton />;
       break;
-    case 'succeeded':
-      content = <WorkerList searchTerm={searchTerm} setSelectedWorker={setSelectedWorker} />;
+    case 'successfully':
+      content = (
+        <WorkersList
+          searchTerm={searchTerm}
+          setSelectedWorker={setSelectedWorker}
+          workers={workers}
+          filter={filter}
+        />
+      );
       break;
     case 'failed':
       content = <Failed />;

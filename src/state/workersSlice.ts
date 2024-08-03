@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
-interface Worker {
+export interface Worker {
   id: string;
   name: string;
   avatar: string;
@@ -14,9 +14,9 @@ interface Worker {
 interface WorkersState {
   workers: Worker[];
   sortCriteria: 'alphabet' | 'birthday';
-  status: 'ok' | 'loading' | 'succeeded' | 'failed';
+  status: 'ok' | 'loading' | 'successfully' | 'failed';
   error: string | null;
-  sortPosition: 'Everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios';
+  sortPosition: 'everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios';
 }
 
 const baseUrl = 'https://66a0f8b17053166bcabd894e.mockapi.io/api/workers';
@@ -32,7 +32,7 @@ const initialState: WorkersState = {
   sortCriteria: 'alphabet',
   status: 'ok',
   error: null,
-  sortPosition: 'Everybody'
+  sortPosition: 'everybody'
 };
 
 const workersSlice = createSlice({
@@ -47,7 +47,7 @@ const workersSlice = createSlice({
     },
     setSortPosition: (
       state,
-      action: PayloadAction<'Everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios'>
+      action: PayloadAction<'everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios'>
     ) => {
       state.sortPosition = action.payload;
     }
@@ -58,7 +58,7 @@ const workersSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchWorkers.fulfilled, (state, action: PayloadAction<Worker[]>) => {
-        state.status = 'succeeded';
+        state.status = 'successfully';
         state.workers = action.payload;
       })
       .addCase(fetchWorkers.rejected, (state, action) => {
