@@ -6,11 +6,13 @@ const path = require('path');
 
 module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
-  const config = {
+
+  return {
     entry: './src/index.tsx',
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, 'build')
+      path: path.resolve(__dirname, 'build'),
+      publicPath: '/'
     },
     module: {
       rules: [
@@ -18,11 +20,6 @@ module.exports = (_, argv) => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: 'ts-loader'
-        },
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          use: ['babel-loader']
         },
         {
           test: /\.s?css$/,
@@ -51,12 +48,16 @@ module.exports = (_, argv) => {
       extensions: ['.js', '.ts', '.tsx']
     },
     plugins: [
-      new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './src/index.html'
-      })
-    ],
+      }),
+      isProduction &&
+        new MiniCssExtractPlugin({
+          filename: '[name].css'
+        }),
+      !isProduction && new webpack.HotModuleReplacementPlugin()
+    ].filter(Boolean),
     devServer: {
       static: {
         directory: path.join(__dirname, 'build')
@@ -64,21 +65,7 @@ module.exports = (_, argv) => {
       historyApiFallback: true,
       open: true,
       hot: true,
-      port: 7770
+      port: 7887
     }
   };
-
-  if (isProduction) {
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  }
-
-  if (isProduction) {
-    config.plugins.push(
-      new MiniCssExtractPlugin({
-        filename: '[name].css'
-      })
-    );
-  }
-
-  return config;
 };
