@@ -14,7 +14,7 @@ export interface Worker {
 interface WorkersState {
   workers: Worker[];
   sortCriteria: 'alphabet' | 'birthday';
-  status: 'ok' | 'loading' | 'successfully' | 'failed';
+  status: 'ok' | 'loading' | 'success' | 'failed';
   error: string | null;
   sortPosition: 'everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios';
 }
@@ -23,6 +23,9 @@ const baseUrl = 'https://66a0f8b17053166bcabd894e.mockapi.io/api/workers';
 
 export const fetchWorkers = createAsyncThunk<Worker[]>('workers/fetchWorkers', async () => {
   const response = await fetch(baseUrl);
+  if (!response.ok) {
+    throw new Error('Failed to fetch workers');
+  }
   const data = await response.json();
   return data;
 });
@@ -58,7 +61,7 @@ const workersSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchWorkers.fulfilled, (state, action: PayloadAction<Worker[]>) => {
-        state.status = 'successfully';
+        state.status = 'success';
         state.workers = action.payload;
       })
       .addCase(fetchWorkers.rejected, (state, action) => {

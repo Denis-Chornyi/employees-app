@@ -12,7 +12,7 @@ module.exports = (_, argv) => {
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'build'),
-      publicPath: '/'
+      publicPath: !isProduction ? '/' : './'
     },
     module: {
       rules: [

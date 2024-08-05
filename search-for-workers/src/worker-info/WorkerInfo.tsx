@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '../state/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchWorkers } from '../state/workersSlice';
+import { RootState, AppDispatch } from '../state/store';
 import moment from 'moment';
 import arrowIcon from '../images/arrow-prev.svg';
 import starIcon from '../images/star.svg';
 import starEmptyIcon from '../images/star-empty.svg';
 import phoneIcon from '../images/phone.svg';
 import CallOnNumber from '../call-on-number/CallOnNumber';
+import NotFindWorkers from '../workers-list-render/NotFindWorkers';
+import SkeletonWorkerInfo from './SkeletonWorkerInfo';
 import './worker-info.scss';
 
 const WorkerInfo: React.FC = () => {
@@ -16,6 +19,7 @@ const WorkerInfo: React.FC = () => {
   const [callOnNumber, setCallOnNumber] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch: AppDispatch = useDispatch();
 
   const handleCallWindow = () => {
     setCallOnNumber(!callOnNumber);
@@ -35,9 +39,20 @@ const WorkerInfo: React.FC = () => {
   const worker = useSelector((state: RootState) =>
     state.workers.workers.find(worker => worker.id === workerId)
   );
+  const status = useSelector((state: RootState) => state.workers.status);
+
+  useEffect(() => {
+    if (status === 'ok') {
+      dispatch(fetchWorkers());
+    }
+  }, [status, dispatch]);
+
+  if (status === 'loading') {
+    return <SkeletonWorkerInfo />;
+  }
 
   if (!worker) {
-    return <div>Worker not found</div>;
+    return <NotFindWorkers />;
   }
 
   const birthDate = moment(worker.birthDate).format('D MMMM YYYY');

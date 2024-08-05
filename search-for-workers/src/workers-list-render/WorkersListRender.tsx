@@ -34,7 +34,7 @@ const WorkersListRender: React.FC<WorkersListRenderProps> = ({
     case 'loading':
       content = <Skeleton />;
       break;
-    case 'successfully':
+    case 'success':
       content = (
         <WorkersList
           searchTerm={searchTerm}
