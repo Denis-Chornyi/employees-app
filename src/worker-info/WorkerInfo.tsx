@@ -7,14 +7,10 @@ import arrowIcon from '../images/arrow-prev.svg';
 import starIcon from '../images/star.svg';
 import starEmptyIcon from '../images/star-empty.svg';
 import phoneIcon from '../images/phone.svg';
-import './worker-info.scss';
 import CallOnNumber from '../call-on-number/CallOnNumber';
+import './worker-info.scss';
 
-interface WorkerInfoProps {
-  onClose: () => void;
-}
-
-const WorkerInfo: React.FC<WorkerInfoProps> = ({ onClose }) => {
+const WorkerInfo: React.FC = () => {
   const [star, setStar] = useState(starEmptyIcon);
   const [styleStarIcon, setStyleStarIcon] = useState({ width: '24px', margin: '0 14px 0 0' });
   const [callOnNumber, setCallOnNumber] = useState(false);

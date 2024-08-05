@@ -27,7 +27,7 @@ const MainWrapper: React.FC = () => {
 };
 
 const WorkerInfoWrapper: React.FC = () => {
-  return <WorkerInfo onClose={() => null} />;
+  return <WorkerInfo />;
 };
 
 const routes: RouteObject[] = [

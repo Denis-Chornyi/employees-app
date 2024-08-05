@@ -1,9 +1,9 @@
 import React from 'react';
 import { Worker } from '../state/workersSlice';
 import NotFindWorkers from './NotFindWorkers';
-import './workers-list.scss';
 import { RootState } from '../state/store';
 import { useSelector } from 'react-redux';
+import './workers-list.scss';
 
 interface WorkerListProps {
   searchTerm: string;
