@@ -44,7 +44,7 @@ const WorkerInfo: React.FC = () => {
   const age = moment().diff(moment(worker.birthDate), 'years');
 
   const handleClose = () => {
-    const previousPath = location.state?.from || '/everybody';
+    const previousPath = location.state?.from || '/?position=everybody';
     navigate(previousPath);
   };
 
@@ -70,7 +70,7 @@ const WorkerInfo: React.FC = () => {
           <div className="worker-info__age">
             <img src={star} alt="star empty" onClick={handleStarIcon} style={styleStarIcon} />
             {birthDate}
-            <span>{age} years</span>
+            <span>{age} років</span>
           </div>
           <div className="worker-info__phone">
             <img src={phoneIcon} alt="phone icon" onClick={handleCallWindow} />

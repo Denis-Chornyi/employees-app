@@ -2,26 +2,27 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSortPosition } from '../state/workersSlice';
 import { RootState } from '../state/store';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import './navigation.scss';
 
 const Navigation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { filter } = useParams<{ filter: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
   const activeButton = useSelector((state: RootState) => state.workers.sortPosition);
+  const position = searchParams.get('position') || 'everybody';
 
   useEffect(() => {
-    if (filter) {
-      dispatch(setSortPosition(filter as any));
+    if (position) {
+      dispatch(setSortPosition(position as any));
     }
-  }, [filter, dispatch]);
+  }, [position, dispatch]);
 
   const handleButtonClick = (
     buttonType: 'everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios'
   ) => {
     dispatch(setSortPosition(buttonType));
-    navigate(`/${buttonType.toLowerCase()}`);
+    setSearchParams({ position: buttonType.toLowerCase() });
   };
 
   return (

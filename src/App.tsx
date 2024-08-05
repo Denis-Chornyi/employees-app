@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
-import { createBrowserRouter, RouterProvider, RouteObject } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { createBrowserRouter, RouterProvider, RouteObject, useSearchParams } from 'react-router-dom';
 import Header from './header/Header';
 import Main from './main/Main';
 import WorkerInfo from './worker-info/WorkerInfo';
 
 const MainWrapper: React.FC = () => {
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerm = searchParams.get('search') || '';
+  const position = searchParams.get('position') || 'everybody';
 
   const toggleSort = () => {
     setIsSortOpen(!isSortOpen);
   };
 
+  useEffect(() => {
+    setSearchParams({ search: searchTerm, position });
+  }, [searchTerm, position, setSearchParams]);
+
   return (
     <>
-      <Header toggleSort={toggleSort} setSearchTerm={setSearchTerm} />
-      <Main toggleSort={toggleSort} isSortOpen={isSortOpen} searchTerm={searchTerm} />
+      <Header toggleSort={toggleSort} setSearchTerm={term => setSearchParams({ search: term, position })} />
+      <Main toggleSort={toggleSort} isSortOpen={isSortOpen} searchTerm={searchTerm} position={position} />
     </>
   );
 };
@@ -30,12 +36,12 @@ const routes: RouteObject[] = [
     element: <MainWrapper />
   },
   {
-    path: '/:filter',
-    element: <MainWrapper />
+    path: 'worker/:workerId',
+    element: <WorkerInfoWrapper />
   },
   {
-    path: '/:filter/worker/:workerId',
-    element: <WorkerInfoWrapper />
+    path: '*',
+    element: <div>Page Not Found</div>
   }
 ];
 
