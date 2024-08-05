@@ -7,7 +7,6 @@ import WorkerInfo from './worker-info/WorkerInfo';
 const MainWrapper: React.FC = () => {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [_, setSelectedWorker] = useState<string | null>(null);
 
   const toggleSort = () => {
     setIsSortOpen(!isSortOpen);
@@ -16,12 +15,7 @@ const MainWrapper: React.FC = () => {
   return (
     <>
       <Header toggleSort={toggleSort} setSearchTerm={setSearchTerm} />
-      <Main
-        toggleSort={toggleSort}
-        isSortOpen={isSortOpen}
-        searchTerm={searchTerm}
-        setSelectedWorker={setSelectedWorker}
-      />
+      <Main toggleSort={toggleSort} isSortOpen={isSortOpen} searchTerm={searchTerm} />
     </>
   );
 };

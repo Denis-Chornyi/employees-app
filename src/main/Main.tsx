@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import WorkersListRender from '../workers-list-render/WorkersListRender';
 import SortWorkers from '../sort-workers/SortWorkers';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,14 +7,12 @@ interface MainProps {
   isSortOpen: boolean;
   toggleSort: () => void;
   searchTerm: string;
-  setSelectedWorker: (id: string) => void;
 }
 
-const Main: React.FC<MainProps> = ({ isSortOpen, toggleSort, searchTerm, setSelectedWorker }) => {
+const Main: React.FC<MainProps> = ({ isSortOpen, toggleSort, searchTerm }) => {
+  const [_, setSelectedWorker] = useState<string | null>(null);
   const navigate = useNavigate();
   const { filter } = useParams<{ filter: string }>();
-
-  console.log('Current filter:', filter);
 
   const handleWorkerSelect = (id: string) => {
     if (filter) {
