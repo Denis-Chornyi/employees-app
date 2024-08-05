@@ -1,4 +1,5 @@
-import '../workers-list-render/workers-list.scss';
+import '../skeleton/skeleton.scss';
+import './skeleton-worker-info.scss';
 
 const SkeletonWorkerInfo = () => {
   return (

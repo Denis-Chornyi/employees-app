@@ -1,5 +1,5 @@
-import errorIcon from '../images/error-icon.png';
-import './workers-list.scss'
+import errorIcon from '../../../images/error-icon.png';
+import './failed.scss'
 
 const Failed = () => {
   return (

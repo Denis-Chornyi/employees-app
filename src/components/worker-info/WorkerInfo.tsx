@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchWorkers } from '../state/workersSlice';
-import { RootState, AppDispatch } from '../state/store';
+import { fetchWorkers } from '../../common/state/workersSlice';
+import { RootState, AppDispatch } from '../../common/state/store';
 import moment from 'moment';
-import arrowIcon from '../images/arrow-prev.svg';
-import starIcon from '../images/star.svg';
-import starEmptyIcon from '../images/star-empty.svg';
-import phoneIcon from '../images/phone.svg';
+import arrowIcon from '../../images/arrow-prev.svg';
+import starIcon from '../../images/star.svg';
+import starEmptyIcon from '../../images/star-empty.svg';
+import phoneIcon from '../../images/phone.svg';
 import CallOnNumber from '../call-on-number/CallOnNumber';
-import NotFindWorkers from '../workers-list-render/NotFindWorkers';
-import SkeletonWorkerInfo from './SkeletonWorkerInfo';
+import NotFindWorkers from '../workers-render/not-find-workers/NotFindWorkers';
+import SkeletonWorkerInfo from '../workers-render/skeleton-worker-info/SkeletonWorkerInfo';
 import './worker-info.scss';
 
 const WorkerInfo: React.FC = () => {

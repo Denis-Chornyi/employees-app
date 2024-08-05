@@ -1,0 +1,36 @@
+.failed {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 0 8px 0;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 22px;
+    color: #050510;
+    margin: 0 0 12px 0;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 20px;
+    color: #97979b;
+    margin: 0 0 12px 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6534ff;
+  }
+}

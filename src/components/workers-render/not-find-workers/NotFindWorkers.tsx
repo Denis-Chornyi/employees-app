@@ -1,5 +1,5 @@
-import magnifyingGlass from '../images/magnifying-glass.png';
-import './workers-list.scss';
+import magnifyingGlass from '../../../images/magnifying-glass.png';
+import './not-find-workers.scss';
 
 const NotFindWorkers = () => {
   return (

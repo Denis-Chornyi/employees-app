@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import burgerMenu from '../images/list-ui-alt.svg';
+import burgerMenu from '../../images/list-ui-alt.svg';
 import './search.scss';
 
 interface SearchProps {

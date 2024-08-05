@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "outDir": "./build",
+    "sourceMap": true
+  },
+  "include": [
+    "src/**/*",
+    "declarations.d.ts",
+    "server.js",
+    "src/components/call-on-number",
+    "src/header",
+    "src/main",
+    "src/navigation",
+    "src/components/search",
+    "src/sort-workers",
+    "src/common/state",
+    "src/worker-info",
+    "src/workers-list-render",
+    "src/components/App.tsx",
+    "src/index.tsx",
+    "src/common/type.ts"
+  ],
+  "exclude": ["node_modules"]
+}

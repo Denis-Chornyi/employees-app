@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortPosition } from '../state/workersSlice';
-import { RootState } from '../state/store';
+import { setSortPosition } from '../../common/state/workersSlice';
+import { RootState } from '../../common/state/store';
 import { useSearchParams } from 'react-router-dom';
 import './navigation.scss';
 

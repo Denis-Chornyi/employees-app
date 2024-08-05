@@ -1,4 +1,4 @@
-import './workers-list.scss';
+import './skeleton.scss';
 
 const Skeleton = () => {
   return (

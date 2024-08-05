@@ -1,7 +1,7 @@
 import React from 'react';
-import { Worker } from '../state/workersSlice';
-import NotFindWorkers from './NotFindWorkers';
-import { RootState } from '../state/store';
+import { Worker } from '../../../common/state/workersSlice';
+import NotFindWorkers from '../not-find-workers/NotFindWorkers';
+import { RootState } from '../../../common/state/store';
 import { useSelector } from 'react-redux';
 import './workers-list.scss';
 
