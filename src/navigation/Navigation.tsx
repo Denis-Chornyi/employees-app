@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSortPosition } from '../state/workersSlice';
 import { RootState } from '../state/store';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import './navigation.scss';
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [searchParams, setSearchParams] = useSearchParams();
   const activeButton = useSelector((state: RootState) => state.workers.sortPosition);
   const position = searchParams.get('position') || 'everybody';
