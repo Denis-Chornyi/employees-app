@@ -85,7 +85,7 @@ const WorkerInfo: React.FC = () => {
           <div className="worker-info__age">
             <img src={star} alt="star empty" onClick={handleStarIcon} style={styleStarIcon} />
             {birthDate}
-            <span>{age} років</span>
+            <span>{age} years</span>
           </div>
           <div className="worker-info__phone">
             <img src={phoneIcon} alt="phone icon" onClick={handleCallWindow} />

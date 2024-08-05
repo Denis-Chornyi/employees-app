@@ -41,4 +41,13 @@
     line-height: 16px;
     color: #55555c;
   }
+
+  &__birthday {
+    display: none;
+    font-size: 15px;
+    line-height: 20px;
+    color: #55555c;
+    position: absolute;
+    right: 20px;
+  }
 }

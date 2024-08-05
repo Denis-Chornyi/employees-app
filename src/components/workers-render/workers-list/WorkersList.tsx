@@ -3,6 +3,7 @@ import { Worker } from '../../../common/state/workersSlice';
 import NotFindWorkers from '../not-find-workers/NotFindWorkers';
 import { RootState } from '../../../common/state/store';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 import './workers-list.scss';
 
 interface WorkerListProps {
@@ -30,10 +31,14 @@ const WorkerList: React.FC<WorkerListProps> = ({
     if (filter === 'everybody' || filter === undefined) return true;
     return worker.position.toLowerCase() === filter.toLowerCase();
   });
+
+  let styleBirthday = {};
+
   const sortedWorkers = filteredAndSortedWorkers.sort((a, b) => {
     if (sortCriteria === 'alphabet') {
       return a.name.localeCompare(b.name);
     } else {
+      styleBirthday = { display: 'block' };
       return new Date(a.birthDate).getTime() - new Date(b.birthDate).getTime();
     }
   });
@@ -53,6 +58,9 @@ const WorkerList: React.FC<WorkerListProps> = ({
             {worker.name}
             <span className="workers__tag">{worker.tag}</span>
             <div className="workers__position">{worker.position}</div>
+          </div>
+          <div className="workers__birthday" style={styleBirthday}>
+            {moment(worker.birthDate).format('D MMM')}
           </div>
         </li>
       ))}
