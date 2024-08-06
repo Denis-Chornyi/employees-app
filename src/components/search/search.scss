@@ -74,4 +74,8 @@
     width: 20px;
     height: 20px;
   }
+
+  &__burger-menu img.styled {
+    filter: invert(54%) sepia(92%) saturate(7380%) hue-rotate(250deg) brightness(94%) contrast(94%);
+  }
 }

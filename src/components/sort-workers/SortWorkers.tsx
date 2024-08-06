@@ -8,9 +8,10 @@ import './sort-workers.scss';
 interface SortWorkersProps {
   onClose: () => void;
   isSortOpen: boolean;
+  handleCloseSort: () => void;
 }
 
-const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen }) => {
+const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen, handleCloseSort }) => {
   const dispatch = useDispatch();
   const activeButton = useSelector((state: RootState) => state.workers.sortCriteria);
 
@@ -20,6 +21,7 @@ const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen }) => {
 
   return (
     <div className="sort-wrapper">
+      {isSortOpen && <div className="overlay" onClick={handleCloseSort}></div>}
       <div className={`sort-block ${isSortOpen ? 'sort-block_active' : ''}`}>
         <div className="sort-block__header">
           <button className="sort-block__close-btn" onClick={onClose}>

@@ -8,15 +8,11 @@ import {
 import Header from './header/Header';
 import Main from './main/Main';
 import WorkerInfo from './worker-info/WorkerInfo';
+import Failed from './workers-render/failed/Failed';
 
 const MainWrapper: React.FC = () => {
-  const [isSortOpen, setIsSortOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const position = searchParams.get('position') || 'everybody';
-
-  const toggleSort = () => {
-    setIsSortOpen(!isSortOpen);
-  };
 
   useEffect(() => {
     setSearchParams({ search: searchParams.get('search') || '', position });
@@ -24,16 +20,8 @@ const MainWrapper: React.FC = () => {
 
   return (
     <>
-      <Header
-        toggleSort={toggleSort}
-        setSearchTerm={term => setSearchParams({ search: term, position })}
-      />
-      <Main
-        toggleSort={toggleSort}
-        isSortOpen={isSortOpen}
-        searchTerm={searchParams.get('search') || ''}
-        position={position}
-      />
+      <Header setSearchTerm={term => setSearchParams({ search: term, position })} />
+      <Main searchTerm={searchParams.get('search') || ''} position={position} />
     </>
   );
 };
@@ -53,7 +41,7 @@ const routes: RouteObject[] = [
   },
   {
     path: '*',
-    element: <div>Page Not Found</div>
+    element: <Failed />
   }
 ];
 

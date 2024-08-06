@@ -8,14 +8,15 @@
 }
 
 .sort-block {
-  width: 100%;
+  width: 95%;
   position: fixed;
   bottom: 0;
-  height: 400px;
+  height: 200px;
   border-radius: 20px 20px 0 0;
   background-color: #fff;
   transform: translateY(100%);
   transition: transform 0.3s ease;
+  will-change: transform;
   z-index: 10;
 
   @include for-large-up {
@@ -125,6 +126,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #05051016;
+  background-color: #0505105c;
   z-index: 9;
 }

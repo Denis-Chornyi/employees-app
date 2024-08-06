@@ -5,15 +5,11 @@ import './search.scss';
 interface SearchProps {
   onBurgerMenuClick: () => void;
   onSearchChange: (searchTerm: string) => void;
+  isSortOpen: boolean;
 }
 
-const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange }) => {
-  const [isStyled, setIsStyled] = useState(false);
+const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSortOpen }) => {
   const [searchTerm, setSearchTerm] = useState('');
-
-  const toggleSize = () => {
-    setIsStyled(prev => !prev);
-  };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -26,6 +22,13 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange }) =>
     onSearchChange('');
   };
 
+  const iconStyle = isSortOpen
+    ? {
+        filter:
+          'invert(54%) sepia(92%) saturate(7380%) hue-rotate(250deg) brightness(94%) contrast(94%)'
+      }
+    : {};
+
   return (
     <div className="search">
       <div className="container search__container">
@@ -37,13 +40,14 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange }) =>
             value={searchTerm}
             onChange={handleInputChange}
           />
-          <button type="button" className="search__burger-menu" onClick={onBurgerMenuClick}>
-            <img
-              src={burgerMenu}
-              alt="Menu"
-              onClick={toggleSize}
-              style={isStyled ? { width: '21px', height: '21px' } : {}}
-            />
+          <button
+            type="button"
+            className="search__burger-menu"
+            onClick={() => {
+              onBurgerMenuClick();
+            }}
+          >
+            <img src={burgerMenu} alt="Menu" style={iconStyle} />
           </button>
         </form>
         {searchTerm && (
