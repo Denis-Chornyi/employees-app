@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
@@ -56,7 +57,10 @@ module.exports = (_, argv) => {
         new MiniCssExtractPlugin({
           filename: '[name].css'
         }),
-      !isProduction && new webpack.HotModuleReplacementPlugin()
+      !isProduction && new webpack.HotModuleReplacementPlugin(),
+      new CopyWebpackPlugin({
+        patterns: [{ from: 'public/_redirects', to: '.' }]
+      })
     ].filter(Boolean),
     devServer: {
       static: {
