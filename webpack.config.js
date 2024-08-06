@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
-
+  console.log(argv.mode);
   return {
     entry: './src/index.tsx',
     output: {
@@ -57,7 +57,7 @@ module.exports = (_, argv) => {
         new MiniCssExtractPlugin({
           filename: '[name].css'
         }),
-      !isProduction && new webpack.HotModuleReplacementPlugin(),
+      isProduction && new webpack.HotModuleReplacementPlugin(),
       new CopyWebpackPlugin({
         patterns: [{ from: 'public/_redirects', to: '.' }]
       })
