@@ -9,23 +9,28 @@ import Header from './header/Header';
 import Main from './main/Main';
 import WorkerInfo from './worker-info/WorkerInfo';
 import Failed from './workers-render/failed/Failed';
-import '../index.scss'
+import '../index.scss';
 
 const MainWrapper: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const position = searchParams.get('position') || 'everybody';
+  const sort = searchParams.get('sort') || '';
 
   const updateSearchParams = useCallback(
     (term: string) => {
       const newParams: { [key: string]: string } = { position };
 
-      if (term) {
+      if (term) { 
         newParams.search = term;
+      }
+
+      if (sort) {
+        newParams.sort = sort;
       }
 
       setSearchParams(newParams);
     },
-    [position, setSearchParams]
+    [position, , sort, setSearchParams]
   );
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import { RootState } from '../../common/state/store';
 import { setSortCriteria } from '../../common/state/workersSlice';
 import closeIcon from '../../images/close-x.svg';
 import './sort-workers.scss';
+import { useSearchParams } from 'react-router-dom';
 
 interface SortWorkersProps {
   onClose: () => void;
@@ -13,9 +14,18 @@ interface SortWorkersProps {
 const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen }) => {
   const dispatch = useDispatch();
   const activeButton = useSelector((state: RootState) => state.workers.sortCriteria);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleButtonClick = (buttonType: 'alphabet' | 'birthday') => {
     dispatch(setSortCriteria(buttonType));
+
+    if (buttonType === 'alphabet') {
+      searchParams.delete('sort');
+    } else {
+      searchParams.set('sort', 'byBirthday');
+    }
+
+    setSearchParams(searchParams);
   };
 
   return (
