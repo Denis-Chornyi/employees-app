@@ -22,7 +22,12 @@ const Navigation = () => {
     buttonType: 'everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios'
   ) => {
     dispatch(setSortPosition(buttonType));
-    setSearchParams({ position: buttonType.toLowerCase() });
+
+    const currentParams = new URLSearchParams(searchParams.toString());
+
+    currentParams.set('position', buttonType.toLowerCase());
+
+    setSearchParams(currentParams);
   };
 
   return (

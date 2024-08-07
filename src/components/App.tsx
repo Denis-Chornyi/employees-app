@@ -18,27 +18,30 @@ const MainWrapper: React.FC = () => {
 
   const updateSearchParams = useCallback(
     (term: string) => {
-      const newParams: { [key: string]: string } = { position };
+      const newParams = new URLSearchParams();
+      newParams.set('position', position);
 
-      if (term) { 
-        newParams.search = term;
+      if (term) {
+        newParams.set('search', term);
       }
 
       if (sort) {
-        newParams.sort = sort;
+        newParams.set('sort', sort);
       }
 
       setSearchParams(newParams);
     },
-    [position, , sort, setSearchParams]
+    [position, sort, setSearchParams]
   );
 
   useEffect(() => {
+    const newParams = new URLSearchParams(searchParams);
+
     if (!searchParams.get('search')) {
-      const newParams = new URLSearchParams(searchParams);
       newParams.delete('search');
-      setSearchParams(newParams, { replace: true });
     }
+
+    setSearchParams(newParams, { replace: true });
   }, [searchParams, setSearchParams]);
 
   return (
