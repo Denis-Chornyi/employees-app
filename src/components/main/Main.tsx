@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import WorkersListRender from '../workers-render/workers-list-render/WorkersListRender';
-import SortWorkers from '../sort-workers/SortWorkers';
 import { useNavigate } from 'react-router-dom';
 
 interface MainProps {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -14,13 +14,30 @@ const MainWrapper: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const position = searchParams.get('position') || 'everybody';
 
+  const updateSearchParams = useCallback(
+    (term: string) => {
+      const newParams: { [key: string]: string } = { position };
+
+      if (term) {
+        newParams.search = term;
+      }
+
+      setSearchParams(newParams);
+    },
+    [position, setSearchParams]
+  );
+
   useEffect(() => {
-    setSearchParams({ search: searchParams.get('search') || '', position });
-  }, [searchParams, position, setSearchParams]);
+    if (!searchParams.get('search')) {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete('search');
+      setSearchParams(newParams, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
 
   return (
     <>
-      <Header setSearchTerm={term => setSearchParams({ search: term, position })} />
+      <Header setSearchTerm={updateSearchParams} />
       <Main searchTerm={searchParams.get('search') || ''} position={position} />
     </>
   );

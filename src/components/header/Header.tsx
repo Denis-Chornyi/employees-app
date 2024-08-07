@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Search from '../search/Search';
 import Navigation from '../navigation/Navigation';
-import './header.scss';
 import SortWorkers from '../sort-workers/SortWorkers';
+import './header.scss';
 
 interface HeaderProps {
   setSearchTerm: (term: string) => void;
@@ -28,11 +28,7 @@ const Header: React.FC<HeaderProps> = ({ setSearchTerm }) => {
         isSortOpen={isSortOpen}
       />
 
-      <SortWorkers
-        onClose={handleCloseSort}
-        isSortOpen={isSortOpen}
-        handleCloseSort={handleCloseSort}
-      />
+      <SortWorkers onClose={handleCloseSort} isSortOpen={isSortOpen} />
 
       <Navigation />
     </div>

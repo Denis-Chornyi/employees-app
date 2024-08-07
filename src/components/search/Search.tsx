@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import burgerMenu from '../../images/list-ui-alt.svg';
 import './search.scss';
 
@@ -11,15 +11,23 @@ interface SearchProps {
 const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSortOpen }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
+  useEffect(() => {
+    onSearchChange(searchTerm);
+  }, [searchTerm, onSearchChange]);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearchTerm(value);
-    onSearchChange(value);
   };
 
   const clearInput = () => {
     setSearchTerm('');
-    onSearchChange('');
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
   };
 
   const iconStyle = isSortOpen
@@ -39,14 +47,9 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSo
             placeholder="Enter name, tag, email..."
             value={searchTerm}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
           />
-          <button
-            type="button"
-            className="search__burger-menu"
-            onClick={() => {
-              onBurgerMenuClick();
-            }}
-          >
+          <button type="button" className="search__burger-menu" onClick={onBurgerMenuClick}>
             <img src={burgerMenu} alt="Menu" style={iconStyle} />
           </button>
         </form>

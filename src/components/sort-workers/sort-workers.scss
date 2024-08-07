@@ -11,7 +11,7 @@
   width: 95%;
   position: fixed;
   bottom: 0;
-  height: 200px;
+  height: 220px;
   border-radius: 20px 20px 0 0;
   background-color: #fff;
   transform: translateY(100%);
@@ -20,14 +20,18 @@
   z-index: 10;
 
   @include for-large-up {
+    display: none;
     width: 373px;
     height: 192px;
     top: 40%;
     transform: translateY(0);
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px,
+      rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
   }
 
   &_active {
+    display: block;
     transform: translateY(0);
   }
 

@@ -1,3 +1,5 @@
+@import '../../../common/breakpoints.scss';
+
 .workers {
   &__list {
     list-style: none;
@@ -9,6 +11,41 @@
     display: flex;
     align-items: center;
     height: 84px;
+  }
+
+  &__year-group {
+    color: #c3c3c6;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 22px 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__year-border {
+    width: 72px;
+    height: 1px;
+    background-color: #c3c3c6;
+
+    &_left {
+      margin-left: 8px;
+    }
+
+    &_right {
+      margin-right: 8px;
+    }
+
+    @include for-large-up {
+      width: 40%;
+    }
+  }
+
+  &__year-title {
+    padding: 0;
+    margin: 0;
   }
 
   &__img {
