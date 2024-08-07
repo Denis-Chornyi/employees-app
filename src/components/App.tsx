@@ -9,6 +9,7 @@ import Header from './header/Header';
 import Main from './main/Main';
 import WorkerInfo from './worker-info/WorkerInfo';
 import Failed from './workers-render/failed/Failed';
+import '../index.scss'
 
 const MainWrapper: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -67,7 +68,11 @@ const router = createBrowserRouter(routes, {
 });
 
 const App: React.FC = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <div className="page">
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default App;
