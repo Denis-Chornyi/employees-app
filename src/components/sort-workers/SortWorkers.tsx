@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../common/state/store';
 import { setSortCriteria } from '../../common/state/workersSlice';
 import closeIcon from '../../images/close-x.svg';
-import './sort-workers.scss';
 import { useSearchParams } from 'react-router-dom';
-import exp from 'constants';
+import './sort-workers.scss';
 
 interface SortWorkersProps {
   onClose: () => void;
