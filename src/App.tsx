@@ -5,11 +5,11 @@ import {
   RouteObject,
   useSearchParams
 } from 'react-router-dom';
-import Header from './header/Header';
-import Main from './main/Main';
-import WorkerInfo from './worker-info/WorkerInfo';
-import Failed from './workers-render/failed/Failed';
-import '../index.scss';
+import Header from './components/header/Header';
+import Main from './components/main/Main';
+import WorkerInfo from './components/worker-info/WorkerInfo';
+import Failed from './components/workers-render/failed/Failed';
+import './index.scss';
 
 const MainWrapper: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
