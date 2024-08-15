@@ -1,7 +1,7 @@
 import magnifyingGlass from '../../../images/magnifying-glass.png';
-import './not-find-workers.scss';
+import './not-found-workers.scss';
 
-const NotFindWorkers = () => {
+const NotFoundWorkers = () => {
   return (
     <div className="nobody-block">
       <img className="nobody-block__img" src={magnifyingGlass} alt="magnifying glass" />
@@ -11,4 +11,4 @@ const NotFindWorkers = () => {
   );
 };
 
-export default NotFindWorkers;
+export default NotFoundWorkers;

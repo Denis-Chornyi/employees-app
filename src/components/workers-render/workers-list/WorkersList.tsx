@@ -1,6 +1,6 @@
 import React from 'react';
 import { Worker } from '../../../common/state/workersSlice';
-import NotFindWorkers from '../not-find-workers/NotFindWorkers';
+import NotFoundWorkers from '../not-found-workers/NotFindWorkers';
 import { RootState } from '../../../common/state/store';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
@@ -44,7 +44,7 @@ const WorkerList: React.FC<WorkerListProps> = ({
   });
 
   if (sortedWorkers.length === 0) {
-    return <NotFindWorkers />;
+    return <NotFoundWorkers />;
   }
 
   const groupedWorkers =

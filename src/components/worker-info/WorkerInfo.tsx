@@ -9,7 +9,7 @@ import starIcon from '../../images/star.svg';
 import starEmptyIcon from '../../images/star-empty.svg';
 import phoneIcon from '../../images/phone.svg';
 import CallOnNumber from '../call-on-number/CallOnNumber';
-import NotFindWorkers from '../workers-render/not-find-workers/NotFindWorkers';
+import NotFoundWorkers from '../workers-render/not-found-workers/NotFindWorkers';
 import SkeletonWorkerInfo from '../workers-render/skeleton-worker-info/SkeletonWorkerInfo';
 import './worker-info.scss';
 
@@ -52,7 +52,7 @@ const WorkerInfo: React.FC = () => {
   }
 
   if (!worker) {
-    return <NotFindWorkers />;
+    return <NotFoundWorkers />;
   }
 
   const birthDate = moment(worker.birthDate).format('D MMMM YYYY');
