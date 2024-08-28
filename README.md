@@ -6,7 +6,6 @@
 
 - [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [TypeScript](https://developer.mozilla.org/en-US/docs/Glossary/TypeScript)
 - [React](https://legacy.reactjs.org/)
 - [Redux](https://redux.js.org/)
