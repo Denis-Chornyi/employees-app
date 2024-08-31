@@ -13,7 +13,8 @@ const Main: React.FC<MainProps> = ({ searchTerm, position }) => {
 
   const handleWorkerSelect = (id: string) => {
     setSelectedWorker(id);
-    navigate(`/worker/${id}`);
+    const currentPathWithParams = `${location.pathname}${location.search}`;
+    navigate(`/worker/${id}`, { state: { from: currentPathWithParams } });
   };
 
   return (

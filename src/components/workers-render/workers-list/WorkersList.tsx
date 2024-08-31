@@ -24,7 +24,8 @@ const WorkerList: React.FC<WorkerListProps> = ({
   const filteredWorkers = workers.filter(
     worker =>
       worker.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      worker.email.toLowerCase().includes(searchTerm.toLowerCase())
+      worker.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      worker.tag.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const filteredAndSortedWorkers = filteredWorkers.filter(worker => {

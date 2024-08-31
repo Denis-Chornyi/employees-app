@@ -41,21 +41,19 @@ const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen }) => {
           <h4 className="sort-block__title">Sorting</h4>
         </div>
         <div className="sort-block__content">
-          <div className="sort-block__wrapper">
+          <div className="sort-block__wrapper" onClick={() => handleButtonClick('alphabet')}>
             <button
               className={`sort-block__button ${
                 activeButton === 'alphabet' ? 'sort-block__button_active' : ''
               }`}
-              onClick={() => handleButtonClick('alphabet')}
             />
             <p className="sort-block__description">Alphabetically</p>
           </div>
-          <div className="sort-block__wrapper">
+          <div className="sort-block__wrapper" onClick={() => handleButtonClick('birthday')}>
             <button
               className={`sort-block__button ${
                 activeButton === 'birthday' ? 'sort-block__button_active' : ''
               }`}
-              onClick={() => handleButtonClick('birthday')}
             />
             <p className="sort-block__description">By birthday</p>
           </div>

@@ -59,7 +59,7 @@ const WorkerInfo: React.FC = () => {
   const age = moment().diff(moment(worker.birthDate), 'years');
 
   const handleClose = () => {
-    const previousPath = location.state?.from || '/?position=everybody';
+    const previousPath = location.state?.from;
     navigate(previousPath);
   };
 

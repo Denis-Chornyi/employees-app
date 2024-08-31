@@ -35,13 +35,20 @@ const MainWrapper: React.FC = () => {
   );
 
   useEffect(() => {
-    const newParams = new URLSearchParams(searchParams);
+    const currentSearch = searchParams.get('search');
 
-    if (!searchParams.get('search')) {
+    if (!currentSearch) {
+      return;
+    }
+
+    const newParams = new URLSearchParams(searchParams);
+    if (!currentSearch) {
       newParams.delete('search');
     }
 
-    setSearchParams(newParams, { replace: true });
+    if (newParams.toString() !== searchParams.toString()) {
+      setSearchParams(newParams, { replace: true });
+    }
   }, [searchParams, setSearchParams]);
 
   return (
