@@ -1,9 +1,9 @@
 .failed {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 125px;
 
   &__icon {
     width: 56px;

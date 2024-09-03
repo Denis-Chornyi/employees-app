@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import burgerMenu from '../../images/list-ui-alt.svg';
 import './search.scss';
 
@@ -9,11 +10,25 @@ interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSortOpen }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [searchTerm, setSearchTerm] = useState<string>(() => {
+    const params = new URLSearchParams(location.search);
+    return params.get('search') || '';
+  });
 
   useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (searchTerm) {
+      params.set('search', searchTerm);
+    } else {
+      params.delete('search');
+    }
+    navigate({ search: params.toString() }, { replace: true });
+
     onSearchChange(searchTerm);
-  }, [searchTerm, onSearchChange]);
+  }, [searchTerm, onSearchChange, navigate, location.search]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
