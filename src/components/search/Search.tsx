@@ -5,7 +5,7 @@ import './search.scss';
 
 interface SearchProps {
   onBurgerMenuClick: () => void;
-  onSearchChange: (searchTerm: string) => void;
+  onSearchChange?: (searchTerm: string) => void;
   isSortOpen: boolean;
 }
 
@@ -27,7 +27,9 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSo
     }
     navigate({ search: params.toString() }, { replace: true });
 
-    onSearchChange(searchTerm);
+    if (onSearchChange) {
+      onSearchChange(searchTerm);
+    }
   }, [searchTerm, onSearchChange, navigate, location.search]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

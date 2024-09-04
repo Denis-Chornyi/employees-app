@@ -5,7 +5,7 @@ import SortWorkers from '../sort-workers/SortWorkers';
 import './header.scss';
 
 interface HeaderProps {
-  setSearchTerm: (term: string) => void;
+  setSearchTerm?: (term: string) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ setSearchTerm }) => {

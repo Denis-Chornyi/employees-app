@@ -74,7 +74,13 @@ const routes: RouteObject[] = [
   },
   {
     path: '*',
-    element: <Failed />
+
+    element: (
+      <>
+        <Header />
+        <Failed />
+      </>
+    )
   }
 ];
 

@@ -7,10 +7,12 @@
   }
 
   &__header {
+    max-height: 280px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    margin-bottom: 8px;
   }
 
   &__close-btn {
