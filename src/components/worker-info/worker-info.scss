@@ -18,17 +18,13 @@
   &__close-btn {
     height: 20px;
     position: absolute;
-    top: 23px;
-    left: 5px;
+    top: 21px;
+    left: 4px;
     text-decoration: none;
     background-color: transparent;
     border: none;
     outline: none;
     cursor: pointer;
-  }
-
-  &__close-btn img {
-    width: 20px;
   }
 
   &__img {
@@ -76,8 +72,9 @@
     margin-bottom: 6px;
   }
 
-  &__age img {
+  &__star {
     cursor: pointer;
+    margin-right: 12px;
   }
 
   &__age span {
@@ -92,8 +89,7 @@
     height: 60px;
   }
 
-  &__phone img {
-    width: 24px;
+  &__phone-number {
     margin-right: 12px;
     cursor: pointer;
   }

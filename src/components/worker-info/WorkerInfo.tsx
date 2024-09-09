@@ -4,18 +4,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchWorkers } from '../../common/state/workersSlice';
 import { RootState, AppDispatch } from '../../common/state/store';
 import moment from 'moment';
-import arrowIcon from '../../images/arrow-prev.svg';
-import starIcon from '../../images/star.svg';
-import starEmptyIcon from '../../images/star-empty.svg';
-import phoneIcon from '../../images/phone.svg';
-import CallOnNumber from '../call-on-number/CallOnNumber';
-import NotFoundWorkers from '../workers-render/not-found-workers/NotFindWorkers';
-import SkeletonWorkerInfo from '../workers-render/skeleton-worker-info/SkeletonWorkerInfo';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
+import CallOnNumber from './call-on-number/CallOnNumber';
+import NotFoundWorkers from '../workers-render/workers-list/not-found-workers/NotFoundWorkers';
+import SkeletonWorkerInfo from './skeleton-worker-info/SkeletonWorkerInfo';
+import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import './worker-info.scss';
 
 const WorkerInfo: React.FC = () => {
-  const [star, setStar] = useState(starEmptyIcon);
-  const [styleStarIcon, setStyleStarIcon] = useState({ width: '24px', margin: '0 14px 0 0' });
+  const [isStarred, setIsStarred] = useState(false);
   const [callOnNumber, setCallOnNumber] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,13 +25,7 @@ const WorkerInfo: React.FC = () => {
   };
 
   const handleStarIcon = () => {
-    if (star === starEmptyIcon) {
-      setStar(starIcon);
-      setStyleStarIcon({ width: '16px', margin: '0 18px 0 4px' });
-    } else {
-      setStar(starEmptyIcon);
-      setStyleStarIcon({ width: '24px', margin: '0 14px 0 0' });
-    }
+    setIsStarred(!isStarred);
   };
 
   const { workerId } = useParams<{ workerId: string }>();
@@ -69,7 +62,7 @@ const WorkerInfo: React.FC = () => {
         <div className={`worker-info__container ${callOnNumber ? 'dimmed' : ''}`}>
           <div className="worker-info__header">
             <button className="worker-info__close-btn" onClick={handleClose}>
-              <img src={arrowIcon} alt="arrow icon" />
+              <KeyboardArrowLeftIcon />
             </button>
             <img src={worker.avatar} className="worker-info__img" alt="avatar" />
             <h3 className="worker-info__name">
@@ -83,12 +76,14 @@ const WorkerInfo: React.FC = () => {
         </div>
         <div className="worker-info__wrapper">
           <div className="worker-info__age">
-            <img src={star} alt="star empty" onClick={handleStarIcon} style={styleStarIcon} />
+            <div className="worker-info__star" onClick={handleStarIcon}>
+              {isStarred ? <StarIcon /> : <StarBorderIcon />}
+            </div>
             {birthDate}
             <span>{age} years</span>
           </div>
           <div className="worker-info__phone">
-            <img src={phoneIcon} alt="phone icon" onClick={handleCallWindow} />
+            <PhoneOutlinedIcon onClick={handleCallWindow} className="worker-info__phone-number" />
             {worker.phone}
           </div>
         </div>

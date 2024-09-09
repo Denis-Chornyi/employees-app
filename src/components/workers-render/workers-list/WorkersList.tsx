@@ -1,6 +1,6 @@
 import React from 'react';
 import { Worker } from '../../../common/state/workersSlice';
-import NotFoundWorkers from '../not-found-workers/NotFindWorkers';
+import NotFoundWorkers from './not-found-workers/NotFoundWorkers';
 import { RootState } from '../../../common/state/store';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
@@ -83,7 +83,9 @@ const WorkerList: React.FC<WorkerListProps> = ({
               <div className="workers__name">
                 {worker.name}
                 <span className="workers__tag">{worker.tag}</span>
-                <div className="workers__position">{worker.position[0].toUpperCase() + worker.position.slice(1)}</div>
+                <div className="workers__position">
+                  {worker.position[0].toUpperCase() + worker.position.slice(1)}
+                </div>
               </div>
               <div className="workers__birthday" style={styleBirthday}>
                 {moment(worker.birthDate).format('D MMM')}

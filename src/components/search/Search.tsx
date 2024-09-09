@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import burgerMenu from '../../images/list-ui-alt.svg';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import './search.scss';
 
 interface SearchProps {
@@ -50,9 +50,15 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSo
   const iconStyle = isSortOpen
     ? {
         filter:
-          'invert(54%) sepia(92%) saturate(7380%) hue-rotate(250deg) brightness(94%) contrast(94%)'
+          'invert(54%) sepia(92%) saturate(7380%) hue-rotate(250deg) brightness(94%) contrast(94%)',
+        width: '20px',
+        height: '20px'
       }
-    : {};
+    : {
+        width: '20px',
+        height: '20px',
+        filter: 'contrast(0%)'
+      };
 
   return (
     <div className="search">
@@ -67,7 +73,7 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSo
             onKeyDown={handleKeyDown}
           />
           <button type="button" className="search__burger-menu" onClick={onBurgerMenuClick}>
-            <img src={burgerMenu} alt="Menu" style={iconStyle} />
+            <FormatListBulletedIcon className="search__burger-menu-icon" style={iconStyle} />
           </button>
         </form>
         {searchTerm && (

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../common/state/store';
 import { setSortCriteria } from '../../common/state/workersSlice';
-import closeIcon from '../../images/close-x.svg';
+import CloseIcon from '@mui/icons-material/Close';
 import { useSearchParams } from 'react-router-dom';
 import './sort-workers.scss';
 
@@ -36,7 +36,9 @@ const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen }) => {
       <div className={`sort-block ${isSortOpen ? 'sort-block_active' : ''}`}>
         <div className="sort-block__header">
           <button className="sort-block__close-btn" onClick={onClose}>
-            <img src={closeIcon} alt="close" className="sort-block__close-icon" />
+            <span className="sort-block__close-icon">
+              <CloseIcon />
+            </span>
           </button>
           <h4 className="sort-block__title">Sorting</h4>
         </div>
