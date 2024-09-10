@@ -4,13 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchWorkers } from '../../common/state/workersSlice';
 import { RootState, AppDispatch } from '../../common/state/store';
 import moment from 'moment';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarIcon from '@mui/icons-material/Star';
-import CallOnNumber from './call-on-number/CallOnNumber';
+import { KeyboardArrowLeft, StarBorder, Star, PhoneOutlined } from '@mui/icons-material';
+import CallOnNumber from './components/call-on-number/CallOnNumber';
 import NotFoundWorkers from '../workers-render/workers-list/not-found-workers/NotFoundWorkers';
-import SkeletonWorkerInfo from './skeleton-worker-info/SkeletonWorkerInfo';
-import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
+import SkeletonWorkerInfo from './components/skeleton-worker-info/SkeletonWorkerInfo';
 import './worker-info.scss';
 
 const WorkerInfo: React.FC = () => {
@@ -62,7 +59,7 @@ const WorkerInfo: React.FC = () => {
         <div className={`worker-info__container ${callOnNumber ? 'dimmed' : ''}`}>
           <div className="worker-info__header">
             <button className="worker-info__close-btn" onClick={handleClose}>
-              <KeyboardArrowLeftIcon />
+              <KeyboardArrowLeft />
             </button>
             <img src={worker.avatar} className="worker-info__img" alt="avatar" />
             <h3 className="worker-info__name">
@@ -77,13 +74,13 @@ const WorkerInfo: React.FC = () => {
         <div className="worker-info__wrapper">
           <div className="worker-info__age">
             <div className="worker-info__star" onClick={handleStarIcon}>
-              {isStarred ? <StarIcon /> : <StarBorderIcon />}
+              {isStarred ? <Star /> : <StarBorder />}
             </div>
             {birthDate}
             <span>{age} years</span>
           </div>
           <div className="worker-info__phone">
-            <PhoneOutlinedIcon onClick={handleCallWindow} className="worker-info__phone-number" />
+            <PhoneOutlined onClick={handleCallWindow} className="worker-info__phone-number" />
             {worker.phone}
           </div>
         </div>

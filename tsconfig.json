@@ -14,7 +14,7 @@
     "src/**/*",
     "declarations.d.ts",
     "server.js",
-    "src/components/worker-info/call-on-number",
+    "src/components/worker-info/components/call-on-number",
     "src/header",
     "src/main",
     "src/navigation",
