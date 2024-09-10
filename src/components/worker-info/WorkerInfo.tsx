@@ -6,7 +6,7 @@ import { RootState, AppDispatch } from '../../common/state/store';
 import moment from 'moment';
 import { KeyboardArrowLeft, StarBorder, Star, PhoneOutlined } from '@mui/icons-material';
 import CallOnNumber from './components/call-on-number/CallOnNumber';
-import NotFoundWorkers from '../workers-render/workers-list/not-found-workers/NotFoundWorkers';
+import NotFoundWorkers from '../workers-render/components/workers-list/not-found-workers/NotFoundWorkers';
 import SkeletonWorkerInfo from './components/skeleton-worker-info/SkeletonWorkerInfo';
 import './worker-info.scss';
 

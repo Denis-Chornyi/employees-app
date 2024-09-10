@@ -1,7 +1,7 @@
 import React from 'react';
-import { Worker } from '../../../common/state/workersSlice';
+import { Worker } from '../../../../common/state/workersSlice';
 import NotFoundWorkers from './not-found-workers/NotFoundWorkers';
-import { RootState } from '../../../common/state/store';
+import { RootState } from '../../../../common/state/store';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 import './workers-list.scss';

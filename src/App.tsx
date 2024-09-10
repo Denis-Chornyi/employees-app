@@ -8,7 +8,7 @@ import {
 import Header from './components/header/Header';
 import Main from './components/main/Main';
 import WorkerInfo from './components/worker-info/WorkerInfo';
-import Failed from './components/workers-render/failed/Failed';
+import Failed from './components/workers-render/components/failed/Failed';
 import './index.scss';
 
 const MainWrapper: React.FC = () => {

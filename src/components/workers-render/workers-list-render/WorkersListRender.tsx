@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchWorkers } from '../../../common/state/workersSlice';
 import { RootState, AppDispatch } from '../../../common/state/store';
-import Failed from '../failed/Failed';
-import Skeleton from '../skeleton/Skeleton';
-import WorkersList from '../workers-list/WorkersList';
+import Failed from '../components/failed/Failed';
+import Skeleton from '../components/skeleton/Skeleton';
+import WorkersList from '../components/workers-list/WorkersList';
 
 interface WorkersListRenderProps {
   searchTerm: string;
