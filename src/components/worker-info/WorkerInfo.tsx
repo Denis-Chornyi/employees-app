@@ -30,7 +30,6 @@ const WorkerInfo: React.FC = () => {
     state.workers.workers.find(worker => worker.id === workerId)
   );
   const status = useSelector((state: RootState) => state.workers.status);
-
   useEffect(() => {
     if (status === 'ok') {
       dispatch(fetchWorkers());
@@ -44,9 +43,10 @@ const WorkerInfo: React.FC = () => {
   if (!worker) {
     return <NotFoundWorkers />;
   }
+  const { birthDate, avatar, position, name, phone, tag } = worker;
 
-  const birthDate = moment(worker.birthDate).format('D MMMM YYYY');
-  const age = moment().diff(moment(worker.birthDate), 'years');
+  const birthDateMoment = moment(birthDate).format('D MMMM YYYY');
+  const age = moment().diff(moment(birthDate), 'years');
 
   const handleClose = () => {
     const previousPath = location.state?.from;
@@ -61,14 +61,12 @@ const WorkerInfo: React.FC = () => {
             <button className="worker-info__close-btn" onClick={handleClose}>
               <KeyboardArrowLeft />
             </button>
-            <img src={worker.avatar} className="worker-info__img" alt="avatar" />
+            <img src={avatar} className="worker-info__img" alt="avatar" />
             <h3 className="worker-info__name">
-              {worker.name}
-              <span className="worker-info__tag">{worker.tag}</span>
+              {name}
+              <span className="worker-info__tag">{tag}</span>
             </h3>
-            <p className="worker-info__position">
-              {worker.position[0].toUpperCase() + worker.position.slice(1)}
-            </p>
+            <p className="worker-info__position">{position[0].toUpperCase() + position.slice(1)}</p>
           </div>
         </div>
         <div className="worker-info__wrapper">
@@ -76,16 +74,16 @@ const WorkerInfo: React.FC = () => {
             <div className="worker-info__star" onClick={handleStarIcon}>
               {isStarred ? <Star /> : <StarBorder />}
             </div>
-            {birthDate}
+            {birthDateMoment}
             <span>{age} years</span>
           </div>
           <div className="worker-info__phone">
             <PhoneOutlined onClick={handleCallWindow} className="worker-info__phone-number" />
-            {worker.phone}
+            {phone}
           </div>
         </div>
       </section>
-      {callOnNumber && <CallOnNumber phoneNumber={worker.phone} cancel={setCallOnNumber} />}
+      {callOnNumber && <CallOnNumber phoneNumber={phone} cancel={setCallOnNumber} />}
     </>
   );
 };

@@ -1,14 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Search from '../search/Search';
 import Navigation from '../navigation/Navigation';
 import SortWorkers from '../sort-workers/SortWorkers';
 import './header.scss';
 
-interface HeaderProps {
-  setSearchTerm?: (term: string) => void;
-}
+const Header: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState<string>(searchParams.get('search') || '');
 
-const Header: React.FC<HeaderProps> = ({ setSearchTerm }) => {
+  
+  useEffect(() => {
+    const currentSearch = searchParams.get('search') || '';
+    if (currentSearch !== searchTerm) {
+      setSearchTerm(currentSearch);
+    }
+  }, [searchParams]); 
+
+  
+  const handleSearchChange = (term: string) => {
+    if (term === searchTerm) return;
+
+    setSearchTerm(term);
+    const newParams = new URLSearchParams(searchParams);
+    if (term) {
+      newParams.set('search', term);
+    } else {
+      newParams.delete('search');
+    }
+    setSearchParams(newParams);
+  };
+
   const [isSortOpen, setIsSortOpen] = useState(false);
 
   const handleBurgerMenuClick = () => {
@@ -24,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({ setSearchTerm }) => {
       <h1 className="header__title">Search</h1>
       <Search
         onBurgerMenuClick={handleBurgerMenuClick}
-        onSearchChange={setSearchTerm}
+        onSearchChange={handleSearchChange}
         isSortOpen={isSortOpen}
       />
 

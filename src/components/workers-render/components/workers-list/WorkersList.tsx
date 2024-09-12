@@ -1,9 +1,9 @@
 import React from 'react';
 import { Worker } from '../../../../common/state/workersSlice';
-import NotFoundWorkers from './not-found-workers/NotFoundWorkers';
 import { RootState } from '../../../../common/state/store';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import NotFoundWorkers from './not-found-workers/NotFoundWorkers';
 import './workers-list.scss';
 
 interface WorkerListProps {

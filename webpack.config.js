@@ -38,7 +38,8 @@ module.exports = (_, argv) => {
               options: {
                 limit: 8192,
                 name: '[name].[ext]',
-                outputPath: 'images'
+                outputPath: 'images',
+                publicPath: '/images'
               }
             }
           ]
@@ -60,6 +61,9 @@ module.exports = (_, argv) => {
       isProduction && new webpack.HotModuleReplacementPlugin(),
       new CopyWebpackPlugin({
         patterns: [{ from: 'public/_redirects', to: '.' }]
+      }),
+      new CopyWebpackPlugin({
+        patterns: [{ from: 'src/images', to: 'images' }]
       })
     ].filter(Boolean),
     devServer: {

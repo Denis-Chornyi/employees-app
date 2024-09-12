@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import './search.scss';
@@ -26,15 +26,16 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSo
       params.delete('search');
     }
     navigate({ search: params.toString() }, { replace: true });
+  }, [searchTerm, navigate, location.search]);
 
+  useEffect(() => {
     if (onSearchChange) {
       onSearchChange(searchTerm);
     }
-  }, [searchTerm, onSearchChange, navigate, location.search]);
+  }, [searchTerm, onSearchChange]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setSearchTerm(value);
+    setSearchTerm(event.target.value);
   };
 
   const clearInput = () => {

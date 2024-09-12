@@ -4,6 +4,7 @@ import { setSortPosition } from '../../common/state/workersSlice';
 import { RootState } from '../../common/state/store';
 import { useSearchParams } from 'react-router-dom';
 import './navigation.scss';
+import tabs from './configs';
 
 const Navigation = () => {
   const dispatch = useDispatch();
@@ -34,54 +35,17 @@ const Navigation = () => {
     <nav className="navigation">
       <div className="container">
         <ul className="navigation__list">
-          <li
-            className={`navigation__item ${
-              activeButton === 'everybody' ? 'navigation__item_active' : ''
-            }`}
-            onClick={() => handleButtonClick('everybody')}
-          >
-            Everybody
-          </li>
-          <li
-            className={`navigation__item ${
-              activeButton === 'designer' ? 'navigation__item_active' : ''
-            }`}
-            onClick={() => handleButtonClick('designer')}
-          >
-            Designers
-          </li>
-          <li
-            className={`navigation__item ${
-              activeButton === 'analyst' ? 'navigation__item_active' : ''
-            }`}
-            onClick={() => handleButtonClick('analyst')}
-          >
-            Analysts
-          </li>
-          <li
-            className={`navigation__item ${
-              activeButton === 'manager' ? 'navigation__item_active' : ''
-            }`}
-            onClick={() => handleButtonClick('manager')}
-          >
-            Managers
-          </li>
-          <li
-            className={`navigation__item ${
-              activeButton === 'ios' ? 'navigation__item_active' : ''
-            }`}
-            onClick={() => handleButtonClick('ios')}
-          >
-            iOS
-          </li>
-          <li
-            className={`navigation__item ${
-              activeButton === 'android' ? 'navigation__item_active' : ''
-            }`}
-            onClick={() => handleButtonClick('android')}
-          >
-            Android
-          </li>
+          {tabs.map(({ label, position }, index) => (
+            <li
+              key={index}
+              className={`navigation__item ${
+                activeButton === position ? 'navigation__item_active' : ''
+              }`}
+              onClick={() => handleButtonClick(position)}
+            >
+              {label}
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
