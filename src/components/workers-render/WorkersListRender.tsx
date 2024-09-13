@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchWorkers } from '../../../common/state/workersSlice';
-import { RootState, AppDispatch } from '../../../common/state/store';
-import Failed from '../components/failed/Failed';
-import Skeleton from '../components/skeleton/Skeleton';
-import WorkersList from '../components/workers-list/WorkersList';
+import { fetchWorkers } from '../../common/state/workersSlice';
+import { RootState, AppDispatch } from '../../common/state/store';
+import Failed from './components/failed/Failed';
+import Skeleton from './components/skeleton/Skeleton';
+import WorkersList from './components/workers-list/WorkersList';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const WorkersListRender: React.FC = () => {

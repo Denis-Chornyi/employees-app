@@ -3,13 +3,12 @@ import {
   createBrowserRouter,
   RouterProvider,
   RouteObject,
-  useSearchParams
 } from 'react-router-dom';
 import Header from './components/header/Header';
 import WorkerInfo from './components/worker-info/WorkerInfo';
 import Failed from './components/workers-render/components/failed/Failed';
 import './index.scss';
-import WorkersListRender from './components/workers-render/workers-list-render/WorkersListRender';
+import WorkersListRender from './components/workers-render/WorkersListRender';
 
 const routes: RouteObject[] = [
   {
