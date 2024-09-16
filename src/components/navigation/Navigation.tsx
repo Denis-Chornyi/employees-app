@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSortPosition } from '../../common/state/workersSlice';
 import { RootState } from '../../common/state/store';
 import { useSearchParams } from 'react-router-dom';
-import './navigation.scss';
 import tabs from './configs';
+import './navigation.scss';
 
 const Navigation = () => {
   const dispatch = useDispatch();

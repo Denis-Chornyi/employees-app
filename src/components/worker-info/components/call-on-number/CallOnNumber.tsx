@@ -2,7 +2,7 @@ import React from 'react';
 import './call-on-number.scss';
 
 interface CallOnNumberProps {
-  phoneNumber: string;
+  phoneNumber: string | undefined;
   cancel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 

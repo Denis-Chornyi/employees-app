@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import './search.scss';
@@ -19,27 +19,30 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSo
   });
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (searchTerm) {
-      params.set('search', searchTerm);
-    } else {
-      params.delete('search');
-    }
-    navigate({ search: params.toString() }, { replace: true });
-  }, [searchTerm, navigate, location.search]);
-
-  useEffect(() => {
     if (onSearchChange) {
       onSearchChange(searchTerm);
     }
   }, [searchTerm, onSearchChange]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+    const value = event.target.value;
+    setSearchTerm(value);
+
+    const params = new URLSearchParams(location.search);
+    if (value) {
+      params.set('search', value);
+    } else {
+      params.delete('search');
+    }
+    navigate({ search: params.toString() }, { replace: true });
   };
 
   const clearInput = () => {
     setSearchTerm('');
+
+    const params = new URLSearchParams(location.search);
+    params.delete('search');
+    navigate({ search: params.toString() }, { replace: true });
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -47,19 +50,6 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSo
       event.preventDefault();
     }
   };
-
-  const iconStyle = isSortOpen
-    ? {
-        filter:
-          'invert(54%) sepia(92%) saturate(7380%) hue-rotate(250deg) brightness(94%) contrast(94%)',
-        width: '20px',
-        height: '20px'
-      }
-    : {
-        width: '20px',
-        height: '20px',
-        filter: 'contrast(0%)'
-      };
 
   return (
     <div className="search">
@@ -74,7 +64,11 @@ const Search: React.FC<SearchProps> = ({ onBurgerMenuClick, onSearchChange, isSo
             onKeyDown={handleKeyDown}
           />
           <button type="button" className="search__burger-menu" onClick={onBurgerMenuClick}>
-            <FormatListBulletedIcon className="search__burger-menu-icon" style={iconStyle} />
+            <FormatListBulletedIcon
+              className={`search__burger-menu-icon ${
+                isSortOpen && 'search__burger-menu-icon_open'
+              }`}
+            />
           </button>
         </form>
         {searchTerm && (

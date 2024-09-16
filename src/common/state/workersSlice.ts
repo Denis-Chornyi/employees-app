@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Worker {
-  id: string;
+  id?: string;
   name: string;
-  avatar: string;
-  tag: string;
-  position: string;
-  birthDate: string;
+  avatar?: string;
   email: string;
-  phone: string;
+  phone?: string;
+  birthDate: string;
+  position: string;
+  tag: string;
 }
 
 interface WorkersState {

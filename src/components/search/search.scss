@@ -70,9 +70,12 @@
     cursor: pointer;
   }
 
+  &__burger-menu-icon {
+    filter: contrast(0%);
 
-
-  &__burger-menu-icon.styled {
-    filter: 'invert(54%) sepia(92%) saturate(7380%) hue-rotate(250deg) brightness(94%) contrast(94%)';
+    &_open {
+      filter: invert(54%) sepia(92%) saturate(7380%) hue-rotate(250deg) brightness(94%)
+        contrast(94%);
+    }
   }
 }
