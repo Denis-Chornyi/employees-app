@@ -1,9 +1,11 @@
+@import '../../common/variables.scss';
+
 .worker-info {
   height: 100vh;
 
   &__container {
     padding: 0 16px;
-    background-color: #f7f7f8;
+    background-color: $colorVeryLightGray;
   }
 
   &__header {
@@ -46,7 +48,7 @@
     font-size: 17px;
     font-weight: 400;
     line-height: 22px;
-    color: #97979b;
+    color: $colorTextGrey;
     vertical-align: middle;
     margin-left: 4px;
   }
@@ -54,7 +56,7 @@
   &__position {
     font-size: 13px;
     line-height: 16px;
-    color: #55555c;
+    color: $colorTextGraphite;
     margin: 0 0 32px 0;
   }
 
@@ -80,7 +82,7 @@
   &__age span {
     position: absolute;
     right: 16px;
-    color: #97979b;
+    color: $colorTextGrey;
   }
 
   &__phone {
@@ -96,7 +98,7 @@
 }
 
 .dimmed {
-  background: #00000060;
+  background: $backGroundColorBlack;
   filter: blur(2px);
   pointer-events: none;
 }

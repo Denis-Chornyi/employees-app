@@ -2,7 +2,7 @@ import React from 'react';
 import { Worker } from '../../../../common/state/workersSlice';
 import moment from 'moment';
 import NotFoundWorkers from './not-found-workers/NotFoundWorkers';
-import getDisplayedEmployees, { groupedWorkers } from '../../../../common/utils/index';
+import { getDisplayedEmployees, groupedWorkers } from '../../../../common/utils/index';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../common/state/store';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -38,9 +38,9 @@ const WorkerList: React.FC = () => {
         <React.Fragment key={year}>
           {sortCriteria !== 'alphabet' && (
             <li className="workers__year-group">
-              <span className="workers__year-border workers__year-border_left"></span>
+              <span className="workers__year-border workers__year-border_left" />
               <h3 className="workers__year-title">{year}</h3>
-              <span className="workers__year-border workers__year-border_right"></span>
+              <span className="workers__year-border workers__year-border_right" />
             </li>
           )}
           {(groupedWorkers(sortedWorkers, sortCriteria) as Record<string, Worker[]>)[year].map(

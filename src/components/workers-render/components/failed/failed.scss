@@ -1,3 +1,5 @@
+@import '../../../../common/variables.scss';
+
 .failed {
   display: flex;
   flex-direction: column;
@@ -15,14 +17,14 @@
     font-weight: 600;
     font-size: 17px;
     line-height: 22px;
-    color: #050510;
+    color: $colorTextAlmostBlack;
     margin: 0 0 12px 0;
   }
 
   &__description {
     font-size: 16px;
     line-height: 20px;
-    color: #97979b;
+    color: $colorTextGrey;
     margin: 0 0 12px 0;
   }
 
@@ -31,6 +33,6 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
-    color: #6534ff;
+    color: $colorViolet;
   }
 }

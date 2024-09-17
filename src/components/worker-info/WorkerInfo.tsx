@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchWorkers } from '../../common/state/workersSlice';
+import { fetchWorkers } from '../../common/gateways/index';
 import { RootState, AppDispatch } from '../../common/state/store';
 import moment from 'moment';
 import { KeyboardArrowLeft, StarBorder, Star, PhoneOutlined } from '@mui/icons-material';
@@ -16,14 +16,6 @@ const WorkerInfo: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch: AppDispatch = useDispatch();
-
-  const handleCallWindow = () => {
-    setCallOnNumber(!callOnNumber);
-  };
-
-  const handleStarIcon = () => {
-    setIsStarred(!isStarred);
-  };
 
   const { workerId } = useParams<{ workerId: string }>();
   const worker = useSelector((state: RootState) =>
@@ -71,14 +63,17 @@ const WorkerInfo: React.FC = () => {
         </div>
         <div className="worker-info__wrapper">
           <div className="worker-info__age">
-            <div className="worker-info__star" onClick={handleStarIcon}>
+            <div className="worker-info__star" onClick={() => setIsStarred(!isStarred)}>
               {isStarred ? <Star /> : <StarBorder />}
             </div>
             {birthDateMoment}
             <span>{age} years</span>
           </div>
           <div className="worker-info__phone">
-            <PhoneOutlined onClick={handleCallWindow} className="worker-info__phone-number" />
+            <PhoneOutlined
+              onClick={() => setCallOnNumber(!callOnNumber)}
+              className="worker-info__phone-number"
+            />
             {phone}
           </div>
         </div>

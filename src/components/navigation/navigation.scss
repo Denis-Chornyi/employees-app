@@ -1,6 +1,8 @@
+@import '../../common/variables.scss';
+
 .navigation {
   font-size: 15px;
-  border-bottom: 0.33px solid #c3c3c6;
+  border-bottom: 0.33px solid $colorLightgrey;
   margin-top: 6px;
 
   &__list {
@@ -11,7 +13,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    color: #97979b;
+    color: $colorTextGrey;
 
     &::-webkit-scrollbar {
       height: 0;
@@ -23,8 +25,8 @@
     cursor: pointer;
 
     &_active {
-      color: #050510;
-      border-bottom: 2px solid #6534ff;
+      color: $colorTextAlmostBlack;
+      border-bottom: 2px solid $colorViolet;
     }
   }
 }

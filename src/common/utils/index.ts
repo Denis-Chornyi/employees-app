@@ -37,8 +37,6 @@ export const getDisplayedEmployees = (
   });
 };
 
-export default getDisplayedEmployees;
-
 export const groupedWorkers = (sortedWorkers: Worker[], sortCriteria: 'alphabet' | 'birthday') =>
   sortCriteria !== 'alphabet'
     ? sortedWorkers.reduce((acc, worker) => {

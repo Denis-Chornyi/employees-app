@@ -1,4 +1,5 @@
 @import '../../../../common/breakpoints.scss';
+@import '../../../../common/variables.scss';
 
 .workers {
   &__list {
@@ -15,7 +16,7 @@
   }
 
   &__year-group {
-    color: #c3c3c6;
+    color: $colorLightgrey;
     font-size: 15px;
     font-weight: 500;
     margin: 22px 0;
@@ -29,7 +30,7 @@
   &__year-border {
     width: 72px;
     height: 1px;
-    background-color: #c3c3c6;
+    background-color: $colorLightgrey;
 
     &_left {
       margin-left: 8px;
@@ -63,13 +64,13 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    color: #050510;
+    color: $colorTextAlmostBlack;
   }
 
   &__tag {
     font-size: 14px;
     line-height: 18px;
-    color: #97979b;
+    color: $colorTextGrey;
     margin-left: 4px;
   }
 
@@ -77,14 +78,14 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
-    color: #55555c;
+    color: $colorTextGraphite;
   }
 
   &__birthday {
     display: none;
     font-size: 15px;
     line-height: 20px;
-    color: #55555c;
+    color: $colorTextGraphite;
     position: absolute;
     right: 20px;
   }

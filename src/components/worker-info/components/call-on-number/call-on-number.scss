@@ -1,3 +1,5 @@
+@import '../../../../common/variables.scss';
+
 .call-container {
   position: absolute;
   bottom: 20px;
@@ -16,15 +18,15 @@
   }
 
   &__phone-number {
-    background-color: #e2e2e2;
+    background-color: $colorGreyForButtonNumber;
     margin-bottom: 8px;
 
     &:hover {
-      background-color: #fff;
+      background-color: $colorWhite;
     }
   }
 
   &__cancel {
-    background-color: #fff;
+    background-color: $colorWhite;
   }
 }

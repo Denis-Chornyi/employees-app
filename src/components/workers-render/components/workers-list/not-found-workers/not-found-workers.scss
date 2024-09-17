@@ -1,3 +1,5 @@
+@import '../../../../../common/variables.scss';
+
 .nobody-block {
   height: 43vh;
   display: flex;
@@ -20,7 +22,7 @@
   &__text {
     font-size: 16px;
     line-height: 20px;
-    color: #97979b;
+    color: $colorTextGrey;
     margin: 0;
   }
 }

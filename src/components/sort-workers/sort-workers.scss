@@ -1,4 +1,5 @@
 @import '../../common/breakpoints.scss';
+@import '../../common/variables.scss';
 
 .sort-wrapper {
   width: 100%;
@@ -13,7 +14,7 @@
   bottom: 0;
   height: 220px;
   border-radius: 20px 20px 0 0;
-  background-color: #fff;
+  background-color: $colorWhite;
   transform: translateY(100%);
   transition: transform 0.3s ease;
   will-change: transform;
@@ -46,7 +47,7 @@
     width: 56px;
     height: 4px;
     margin: 12px 0 12px 0;
-    background-color: #c3c3c6;
+    background-color: $colorLightgrey;
     outline: none;
     border: none;
     cursor: pointer;
@@ -58,7 +59,7 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background-color: #f7f7f8;
+      background-color: $colorVeryLightGray;
       margin: 0;
       padding: 0;
       display: flex;
@@ -80,7 +81,7 @@
     font-size: 20px;
     line-height: 24px;
     font-weight: 600;
-    color: #050510;
+    color: $colorTextAlmostBlack;
     margin: 0;
 
     @include for-large-up {
@@ -103,17 +104,17 @@
   &__button {
     width: 20px;
     height: 20px;
-    background-color: #fff;
+    background-color: $colorWhite;
     border-radius: 100%;
     outline: 0;
     padding: 0;
     margin-right: 20px;
-    border: 2px solid #6534ff;
+    border: 2px solid $colorViolet;
     cursor: pointer;
   }
 
   &__button_active {
-    border: 6px solid #6534ff;
+    border: 6px solid $colorViolet;
   }
 
   &__description {
@@ -121,7 +122,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
-    color: #050510;
+    color: $colorTextAlmostBlack;
   }
 }
 
@@ -131,6 +132,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0505105c;
+  background-color: $colorTransparentBlack;
   z-index: 9;
 }

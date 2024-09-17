@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { fetchWorkers } from '../gateways/index';
 export interface Worker {
   id?: string;
   name: string;
@@ -18,17 +18,6 @@ interface WorkersState {
   error: string | null;
   sortPosition: 'everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios';
 }
-
-const baseUrl = 'https://66a0f8b17053166bcabd894e.mockapi.io/api/workers';
-
-export const fetchWorkers = createAsyncThunk<Worker[]>('workers/fetchWorkers', async () => {
-  const response = await fetch(baseUrl);
-  if (!response.ok) {
-    throw new Error('Failed to fetch workers');
-  }
-  const data = await response.json();
-  return data;
-});
 
 const initialState: WorkersState = {
   workers: [],

@@ -32,7 +32,7 @@ const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen }) => {
 
   return (
     <div className="sort-wrapper">
-      {isSortOpen && <div className="overlay" onClick={onClose}></div>}
+      {isSortOpen && <div className="overlay" onClick={onClose} />}
       <div className={`sort-block ${isSortOpen ? 'sort-block_active' : ''}`}>
         <div className="sort-block__header">
           <button className="sort-block__close-btn" onClick={onClose}>
