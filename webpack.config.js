@@ -52,7 +52,8 @@ module.exports = (_, argv) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: './src/index.html'
+        template: './src/index.html',
+        favicon: './public/favicon.ico'
       }),
       isProduction &&
         new MiniCssExtractPlugin({
@@ -63,7 +64,8 @@ module.exports = (_, argv) => {
         patterns: [{ from: 'public/_redirects', to: '.' }]
       }),
       new CopyWebpackPlugin({
-        patterns: [{ from: 'src/images', to: 'images' }]
+        patterns: [{ from: 'src/images', to: 'images' }],
+        patterns: [{ from: 'public/favicon.ico', to: '' }]
       })
     ].filter(Boolean),
     devServer: {
