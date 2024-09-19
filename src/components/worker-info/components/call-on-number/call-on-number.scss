@@ -3,10 +3,10 @@
 .call-container {
   position: absolute;
   bottom: 20px;
-  width: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: -webkit-fill-available;
   margin: 0 8px;
 
   &__btn {
@@ -18,8 +18,8 @@
   }
 
   &__phone-number {
-    background-color: $colorGreyForButtonNumber;
     margin-bottom: 8px;
+    background-color: $colorGreyForButtonNumber;
 
     &:hover {
       background-color: $colorWhite;

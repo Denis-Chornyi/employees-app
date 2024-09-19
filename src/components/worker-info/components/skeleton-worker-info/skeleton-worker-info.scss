@@ -1,27 +1,27 @@
 .skeleton-worker-info {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 
   &__img {
     width: 104px;
     height: 104px;
-    border-radius: 50%;
     margin: 72px 0 24px 0;
+    border-radius: 50%;
   }
 
   &__name {
-    border-radius: 50px;
     width: 210px;
     height: 28px;
+    border-radius: 50px;
   }
 
   &__position {
-    margin: 20px 0 0 0;
-    border-radius: 50px;
     width: 80px;
     height: 16px;
+    margin: 20px 0 0 0;
+    border-radius: 50px;
   }
 
   &__age {

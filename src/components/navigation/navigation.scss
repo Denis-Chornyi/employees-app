@@ -1,19 +1,19 @@
 @import '../../common/scss/variables.scss';
 
 .navigation {
+  margin-top: 6px;
   font-size: 15px;
   border-bottom: 0.33px solid $colorLightgrey;
-  margin-top: 6px;
 
   &__list {
-    max-width: 500px;
     display: flex;
     justify-content: space-between;
-    overflow-x: auto;
-    list-style: none;
+    max-width: 500px;
     padding: 0;
     margin: 0;
     color: $colorTextGrey;
+    list-style: none;
+    overflow-x: auto;
 
     &::-webkit-scrollbar {
       height: 0;

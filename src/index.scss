@@ -2,10 +2,10 @@
 @import './common/scss/variables.scss';
 
 body {
-  background-color: $colorForBodyLightGrey;
   margin: 0;
   color: $colorTextAlmostBlack;
   font-family: 'Inter', sans-serif;
+  background-color: $colorForBodyLightGrey;
 }
 
 .container {
@@ -13,10 +13,10 @@ body {
 }
 
 .page {
-  margin: 0 auto;
+  position: relative;
   max-width: 1280px;
   min-width: 375px;
   min-height: 100vh;
+  margin: 0 auto;
   background-color: $colorWhite;
-  position: relative;
 }

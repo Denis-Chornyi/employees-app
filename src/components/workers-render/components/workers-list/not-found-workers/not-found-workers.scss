@@ -1,11 +1,11 @@
 @import '../../../../../common/scss/variables.scss';
 
 .nobody-block {
-  height: 43vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 43vh;
 
   &__img {
     height: 56px;
@@ -13,16 +13,16 @@
   }
 
   &__title {
+    margin: 0 0 12px 0;
     font-weight: 600;
     font-size: 17px;
     line-height: 22px;
-    margin: 0 0 12px 0;
   }
 
   &__text {
+    margin: 0;
     font-size: 16px;
     line-height: 20px;
     color: $colorTextGrey;
-    margin: 0;
   }
 }

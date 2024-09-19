@@ -12,11 +12,11 @@
 
     @include for-large-up {
       display: block;
+      margin: 0;
+      padding: 16px 0 12px 24px;
       font-weight: 700;
       font-size: 24px;
       line-height: 28px;
-      margin: 0;
-      padding: 16px 0 12px 24px;
     }
   }
 }
