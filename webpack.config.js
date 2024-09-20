@@ -61,11 +61,11 @@ module.exports = (_, argv) => {
         }),
       isProduction && new webpack.HotModuleReplacementPlugin(),
       new CopyWebpackPlugin({
-        patterns: [{ from: 'public/_redirects', to: '.' }]
-      }),
-      new CopyWebpackPlugin({
-        patterns: [{ from: 'src/images', to: 'images' }],
-        patterns: [{ from: 'public/favicon.ico', to: '' }]
+        patterns: [
+          { from: 'public/_redirects', to: '.' },
+          { from: 'public/images', to: 'images' },
+          { from: 'public/favicon.ico', to: '' }
+        ]
       })
     ].filter(Boolean),
     devServer: {
