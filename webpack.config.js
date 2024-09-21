@@ -52,8 +52,8 @@ module.exports = (_, argv) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: './src/index.html',
-        favicon: './public/favicon.ico'
+        template: './public/index.html',
+        favicon: './public/favicon-v1.ico'
       }),
       isProduction &&
         new MiniCssExtractPlugin({
@@ -64,7 +64,7 @@ module.exports = (_, argv) => {
         patterns: [
           { from: 'public/_redirects', to: '.' },
           { from: 'public/images', to: 'images' },
-          { from: 'public/favicon.ico', to: '' }
+          { from: 'public/favicon-v1.ico', to: '' }
         ]
       })
     ].filter(Boolean),
