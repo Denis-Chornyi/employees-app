@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchWorkers } from '../gateways/index';
-export interface Worker {
+import { fetchEmployees } from '../gateways/index';
+export interface Employee {
   id?: string;
   name: string;
   avatar?: string;
@@ -11,28 +11,28 @@ export interface Worker {
   tag: string;
 }
 
-interface WorkersState {
-  workers: Worker[];
+interface EmployeeState {
+  employees: Employee[];
   sortCriteria: 'alphabet' | 'birthday';
   status: 'ok' | 'loading' | 'success' | 'failed';
   error: string | null;
   sortPosition: 'everybody' | 'designer' | 'analyst' | 'manager' | 'android' | 'ios';
 }
 
-const initialState: WorkersState = {
-  workers: [],
+const initialState: EmployeeState = {
+  employees: [],
   sortCriteria: 'alphabet',
   status: 'ok',
   error: null,
   sortPosition: 'everybody'
 };
 
-const workersSlice = createSlice({
-  name: 'workers',
+const employeesSlice = createSlice({
+  name: 'employees',
   initialState,
   reducers: {
-    setWorkers: (state, action: PayloadAction<Worker[]>) => {
-      state.workers = action.payload;
+    setEmployees: (state, action: PayloadAction<Employee[]>) => {
+      state.employees = action.payload;
     },
     setSortCriteria: (state, action: PayloadAction<'alphabet' | 'birthday'>) => {
       state.sortCriteria = action.payload;
@@ -46,20 +46,20 @@ const workersSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchWorkers.pending, state => {
+      .addCase(fetchEmployees.pending, state => {
         state.status = 'loading';
       })
-      .addCase(fetchWorkers.fulfilled, (state, action: PayloadAction<Worker[]>) => {
+      .addCase(fetchEmployees.fulfilled, (state, action: PayloadAction<Employee[]>) => {
         state.status = 'success';
-        state.workers = action.payload;
+        state.employees = action.payload;
       })
-      .addCase(fetchWorkers.rejected, (state, action) => {
+      .addCase(fetchEmployees.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.error.message || 'Failed to fetch workers';
+        state.error = action.error.message || 'Failed to fetch employees';
       });
   }
 });
 
-export const { setWorkers, setSortCriteria, setSortPosition } = workersSlice.actions;
+export const { setEmployees, setSortCriteria, setSortPosition } = employeesSlice.actions;
 
-export default workersSlice.reducer;
+export default employeesSlice.reducer;

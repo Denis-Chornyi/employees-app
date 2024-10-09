@@ -1,20 +1,20 @@
 import moment from 'moment';
 
-type Worker = {
+type Employee = {
   name: string;
   email: string;
   tag: string;
   position: string;
   birthDate: string;
-  sortedWorkers?: void;
+  sortedEmployees?: void;
 };
 
 export const getDisplayedEmployees = (
-  employees: Worker[],
+  employees: Employee[],
   positionValue: string | undefined,
   searchText: string | undefined,
   sortCriteria: 'alphabet' | 'birthday'
-): Worker[] => {
+): Employee[] => {
   const filteredEmployees = employees.filter(
     ({ position, name, tag, email }) =>
       (!positionValue ||
@@ -37,14 +37,14 @@ export const getDisplayedEmployees = (
   });
 };
 
-export const groupedWorkers = (sortedWorkers: Worker[], sortCriteria: 'alphabet' | 'birthday') =>
+export const groupedEmployees = (sortedEmployee: Employee[], sortCriteria: 'alphabet' | 'birthday') =>
   sortCriteria !== 'alphabet'
-    ? sortedWorkers.reduce((acc, worker) => {
-        const year = moment(worker.birthDate).format('YYYY');
+    ? sortedEmployee.reduce((acc, employee) => {
+        const year = moment(employee.birthDate).format('YYYY');
         if (!acc[year]) {
           acc[year] = [];
         }
-        acc[year].push(worker);
+        acc[year].push(employee);
         return acc;
-      }, {} as Record<string, Worker[]>)
-    : { '': sortedWorkers };
+      }, {} as Record<string, Employee[]>)
+    : { '': sortedEmployee };

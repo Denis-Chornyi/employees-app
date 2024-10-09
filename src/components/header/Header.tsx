@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Search from '../search/Search';
 import Navigation from '../navigation/Navigation';
-import SortWorkers from '../sort-workers/SortWorkers';
+import SortEmployees from '../sort-employees/SortEmployees';
 import './header.scss';
 
 const Header: React.FC = () => {
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
         isSortOpen={isSortOpen}
       />
 
-      <SortWorkers onClose={handleCloseSort} isSortOpen={isSortOpen} />
+      <SortEmployees onClose={handleCloseSort} isSortOpen={isSortOpen} />
 
       <Navigation />
     </div>

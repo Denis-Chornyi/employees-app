@@ -1,19 +1,19 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../common/state/store';
-import { setSortCriteria } from '../../common/state/workersSlice';
+import { setSortCriteria } from '../../common/state/employeesSlice';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSearchParams } from 'react-router-dom';
-import './sort-workers.scss';
+import './sort-employees.scss';
 
-interface SortWorkersProps {
+interface SortEmployeesProps {
   onClose: () => void;
   isSortOpen: boolean;
 }
 
-const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen }) => {
+const SortEmployees: React.FC<SortEmployeesProps> = ({ onClose, isSortOpen }) => {
   const dispatch = useDispatch();
-  const activeButton = useSelector((state: RootState) => state.workers.sortCriteria);
+  const activeButton = useSelector((state: RootState) => state.employees.sortCriteria);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleButtonClick = (buttonType: 'alphabet' | 'birthday') => {
@@ -65,4 +65,4 @@ const SortWorkers: React.FC<SortWorkersProps> = ({ onClose, isSortOpen }) => {
   );
 };
 
-export default SortWorkers;
+export default SortEmployees;

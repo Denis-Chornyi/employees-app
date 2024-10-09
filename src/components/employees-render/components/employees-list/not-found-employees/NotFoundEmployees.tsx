@@ -1,6 +1,6 @@
-import './not-found-workers.scss';
+import './not-found-employees.scss';
 
-const NotFoundWorkers = () => (
+const NotFoundEmployees = () => (
   <div className="nobody-block">
     <img className="nobody-block__img" src="/images/magnifying-glass.png" alt="magnifying glass" />
     <h4 className="nobody-block__title">We didn't find anyone</h4>
@@ -8,4 +8,4 @@ const NotFoundWorkers = () => (
   </div>
 );
 
-export default NotFoundWorkers;
+export default NotFoundEmployees;

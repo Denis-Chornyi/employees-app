@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider, RouteObject } from 'react-router-dom';
 import Header from './components/header/Header';
-import WorkerInfo from './components/worker-info/WorkerInfo';
-import Failed from './components/workers-render/components/failed/Failed';
-import WorkersListRender from './components/workers-render/WorkersListRender';
+import EmployeeInfo from './components/employee-info/EmployeeInfo';
+import Failed from './components/employees-render/components/failed/Failed';
+import EmployeesListRender from './components/employees-render/EmployeesListRender';
 import './index.scss';
 
 const routes: RouteObject[] = [
@@ -12,13 +12,13 @@ const routes: RouteObject[] = [
     element: (
       <>
         <Header />
-        <WorkersListRender />
+        <EmployeesListRender />
       </>
     )
   },
   {
-    path: 'worker/:workerId',
-    element: <WorkerInfo />
+    path: 'employee/:employeeId',
+    element: <EmployeeInfo />
   },
   {
     path: '*',
